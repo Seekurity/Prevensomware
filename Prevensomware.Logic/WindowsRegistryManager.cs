@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Win32;
+using Prevensomware.Dto;
 
 namespace Prevensomware.Logic
 {
     public static class WindowsRegistryManager
     {
-        public static void GenerateNewRegistryKeys(IEnumerable<ExtensionReplacement> extensionReplacementList)
+        public static void GenerateNewRegistryKeys(IEnumerable<DtoFileInfo> extensionReplacementList)
         {
             foreach (var extReplacement in extensionReplacementList)
             {
@@ -16,11 +17,11 @@ namespace Prevensomware.Logic
             }
         }
 
-        private static void CloneClassesRootKeys(RegistryKey registryKey, ExtensionReplacement extensionReplacement)
+        private static void CloneClassesRootKeys(RegistryKey registryKey, DtoFileInfo dtoFileInfo)
         {
-            var mainSubKey = registryKey.OpenSubKey(extensionReplacement.Name, true);
-            if (mainSubKey == null || registryKey.GetSubKeyNames().Any(keyName => keyName == extensionReplacement.Replacement)) return;
-            var newsubKey = registryKey.CreateSubKey(extensionReplacement.Replacement);
+            var mainSubKey = registryKey.OpenSubKey(dtoFileInfo.OriginalExtension, true);
+            if (mainSubKey == null || registryKey.GetSubKeyNames().Any(keyName => keyName == dtoFileInfo.ReplacedExtension)) return;
+            var newsubKey = registryKey.CreateSubKey(dtoFileInfo.ReplacedExtension);
             CloneRegKeysAndValues(mainSubKey, newsubKey);
         }
 

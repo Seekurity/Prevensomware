@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Threading;
 using System.Windows.Forms;
+using Prevensomware.Dto;
 using Prevensomware.Logic;
 
 namespace Prevensomware.GUI
@@ -12,6 +12,7 @@ namespace Prevensomware.GUI
         public FrmMain()
         {
             InitializeComponent();
+            FileManager.LogDelegate = GetFileWorkerUpdateLog;
         }
 
         private void browseFileDialog_Click(object sender, EventArgs e)
@@ -23,18 +24,18 @@ namespace Prevensomware.GUI
             }
         }
        
-        private IEnumerable<ExtensionReplacement> GenerateExtensionReplacementList(string listTxt)
+        private IEnumerable<DtoFileInfo> GenerateExtensionReplacementList(string listTxt)
         {
             var extensionReplacementArray = listTxt.Split(';');
-            var extensionReplacementList = new List<ExtensionReplacement>();
+            var extensionReplacementList = new List<DtoFileInfo>();
             foreach (var extensionReplacement in extensionReplacementArray)
             {
                 var name = extensionReplacement.Split(':')[0];
                 var replacement = extensionReplacement.Split(':')[1];
-                extensionReplacementList.Add(new ExtensionReplacement
+                extensionReplacementList.Add(new DtoFileInfo
                 {
-                    Name =  name,
-                    Replacement = replacement
+                    OriginalExtension =  name,
+                    ReplacedExtension = replacement
                 });
             }
             return extensionReplacementList;
@@ -57,8 +58,12 @@ namespace Prevensomware.GUI
             lblStatue.Text = "Done";
         }
 
-        private void GetFileWorkerUpdateLog()
+        private void GetFileWorkerUpdateLog(string logEntry)
         {
+            Invoke(new Action(() =>
+            {
+                tbLog.Text += logEntry + "\n";
+            }));
         }
         private void SetWorkerThreads()
         {
@@ -67,7 +72,7 @@ namespace Prevensomware.GUI
             registryWorker.DoWork += (s, eventArgs) => WindowsRegistryManager.GenerateNewRegistryKeys(extensionReplacementList);
             registryWorker.RunWorkerAsync();
             var fileWorker = new BackgroundWorker();
-            fileWorker.DoWork += (s, eventArgs) => FileManager.RenameAllFilesWithNewExtension(extensionReplacementList, lblPath.Text);
+            fileWorker.DoWork += (s, eventArgs) => FileManager.RenameAllFilesWithNewExtensionForCertainPath(extensionReplacementList, lblPath.Text);
             fileWorker.RunWorkerCompleted += FileWorkerWorkCompleted;
             fileWorker.RunWorkerAsync();
 

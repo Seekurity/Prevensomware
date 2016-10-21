@@ -35,6 +35,7 @@
             this.btnChoosePath = new System.Windows.Forms.Button();
             this.lblStatue = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tbLog = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnRenameExtensions
@@ -49,7 +50,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(248, 130);
+            this.textBox2.Location = new System.Drawing.Point(69, 67);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(390, 38);
             this.textBox2.TabIndex = 1;
@@ -65,7 +66,7 @@
             // 
             // btnChoosePath
             // 
-            this.btnChoosePath.Location = new System.Drawing.Point(669, 61);
+            this.btnChoosePath.Location = new System.Drawing.Point(790, 63);
             this.btnChoosePath.Name = "btnChoosePath";
             this.btnChoosePath.Size = new System.Drawing.Size(329, 44);
             this.btnChoosePath.TabIndex = 0;
@@ -85,17 +86,26 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(252, 191);
+            this.label1.Location = new System.Drawing.Point(73, 128);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(333, 64);
             this.label1.TabIndex = 4;
             this.label1.Text = "ex: \r\n.doc:.blahdoc;.txt:.blahtxt";
+            // 
+            // tbLog
+            // 
+            this.tbLog.Location = new System.Drawing.Point(18, 298);
+            this.tbLog.Multiline = true;
+            this.tbLog.Name = "tbLog";
+            this.tbLog.Size = new System.Drawing.Size(1541, 566);
+            this.tbLog.TabIndex = 5;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1585, 1139);
+            this.Controls.Add(this.tbLog);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblStatue);
             this.Controls.Add(this.lblPath);
@@ -118,6 +128,7 @@
         private System.Windows.Forms.Button btnChoosePath;
         private System.Windows.Forms.Label lblStatue;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbLog;
     }
 }
 
