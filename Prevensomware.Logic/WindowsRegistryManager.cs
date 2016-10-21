@@ -7,13 +7,13 @@ namespace Prevensomware.Logic
 {
     public static class WindowsRegistryManager
     {
-        public static void GenerateNewRegistryKeys(IEnumerable<DtoFileInfo> extensionReplacementList)
+        public static void GenerateNewRegistryKeys(IEnumerable<DtoFileInfo> fileInfoList)
         {
-            foreach (var extReplacement in extensionReplacementList)
+            foreach (var fileInfo in fileInfoList)
             {
-                CloneClassesRootKeys(Registry.ClassesRoot, extReplacement);
-                CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes",true), extReplacement);
-                CloneClassesRootKeys(Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes",true), extReplacement);
+                CloneClassesRootKeys(Registry.ClassesRoot, fileInfo);
+                CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes",true), fileInfo);
+                CloneClassesRootKeys(Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes",true), fileInfo);
             }
         }
 

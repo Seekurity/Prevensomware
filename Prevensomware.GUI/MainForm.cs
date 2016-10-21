@@ -7,9 +7,9 @@ using Prevensomware.Logic;
 
 namespace Prevensomware.GUI
 {
-    public partial class FrmMain : Form
+    public partial class MainForm : Form
     {
-        public FrmMain()
+        public MainForm()
         {
             InitializeComponent();
             FileManager.LogDelegate = GetFileWorkerUpdateLog;
@@ -23,7 +23,7 @@ namespace Prevensomware.GUI
                 lblPath.Text = folderBrowserDialog1.SelectedPath;
             }
         }
-       
+
         private IEnumerable<DtoFileInfo> GenerateExtensionReplacementList(string listTxt)
         {
             var extensionReplacementArray = listTxt.Split(';');
@@ -34,12 +34,12 @@ namespace Prevensomware.GUI
                 var replacement = extensionReplacement.Split(':')[1];
                 extensionReplacementList.Add(new DtoFileInfo
                 {
-                    OriginalExtension =  name,
+                    OriginalExtension = name,
                     ReplacedExtension = replacement
                 });
             }
             return extensionReplacementList;
-            
+
         }
 
         private void btnRenameExtensions_Click(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace Prevensomware.GUI
                 return;
             };
             lblStatue.Text = "Working";
-           SetWorkerThreads();
+            SetWorkerThreads();
         }
 
         private void FileWorkerWorkCompleted(object sender, EventArgs e)

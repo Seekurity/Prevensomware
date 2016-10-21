@@ -10,15 +10,15 @@ C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.GU
 C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.exe
 C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.pdb
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.GUI.exe.config
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.exe
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.pdb
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.csprojResolveAssemblyReference.cache
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.FrmMain.resources
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.Properties.Resources.resources
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.csproj.GenerateResource.Cache
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.GUI.exe
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.GUI.pdb
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.Dto.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.Logic.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.Dto.pdb
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.Logic.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.csprojResolveAssemblyReference.cache
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.Properties.Resources.resources
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.csproj.GenerateResource.Cache
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.exe
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.MainForm.resources
