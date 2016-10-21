@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.ServiceTests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.Dto", "Prevensomware.Dto\Prevensomware.Dto.csproj", "{3E03462B-E56E-4E81-A820-1D5A6313B20B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.DA", "Prevensomware.DA\Prevensomware.DA.csproj", "{0E805762-FA55-474D-90FC-4F31B8BE2705}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomeware.DaTests", "Prevensomeware.DA\Prevensomeware.DaTests.csproj", "{A5B44F7D-8E5C-41D2-A66E-1F4177CDA5DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomeware.DtoTests", "Prevensomeware.DtoTests\Prevensomeware.DtoTests.csproj", "{30063DD8-0910-4C3C-834B-68F1011C26AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +53,18 @@ Global
 		{3E03462B-E56E-4E81-A820-1D5A6313B20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E03462B-E56E-4E81-A820-1D5A6313B20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E03462B-E56E-4E81-A820-1D5A6313B20B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E805762-FA55-474D-90FC-4F31B8BE2705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E805762-FA55-474D-90FC-4F31B8BE2705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E805762-FA55-474D-90FC-4F31B8BE2705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E805762-FA55-474D-90FC-4F31B8BE2705}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5B44F7D-8E5C-41D2-A66E-1F4177CDA5DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5B44F7D-8E5C-41D2-A66E-1F4177CDA5DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5B44F7D-8E5C-41D2-A66E-1F4177CDA5DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5B44F7D-8E5C-41D2-A66E-1F4177CDA5DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30063DD8-0910-4C3C-834B-68F1011C26AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30063DD8-0910-4C3C-834B-68F1011C26AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30063DD8-0910-4C3C-834B-68F1011C26AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30063DD8-0910-4C3C-834B-68F1011C26AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,5 +72,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{09617249-B026-455D-B17B-3F90B350D464} = {688B697C-6363-43ED-AEA0-32CA57351665}
 		{9F96C6F1-835D-4533-BE9F-63FC8B472639} = {688B697C-6363-43ED-AEA0-32CA57351665}
+		{A5B44F7D-8E5C-41D2-A66E-1F4177CDA5DA} = {688B697C-6363-43ED-AEA0-32CA57351665}
+		{30063DD8-0910-4C3C-834B-68F1011C26AB} = {688B697C-6363-43ED-AEA0-32CA57351665}
 	EndGlobalSection
 EndGlobal

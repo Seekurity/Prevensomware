@@ -1,0 +1,16 @@
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\Prevensomware.DA.dll.config
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\Prevensomware.DA.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\Prevensomware.DA.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\EntityFramework.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\Prevensomware.Dto.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\System.Data.SQLite.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\Prevensomware.Dto.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\EntityFramework.xml
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\bin\Debug\System.Data.SQLite.xml
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\obj\Debug\Prevensomware.DA.csprojResolveAssemblyReference.cache
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\obj\Debug\Prevensomware.DA.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.DA\obj\Debug\Prevensomware.DA.pdb

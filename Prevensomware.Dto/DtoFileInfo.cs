@@ -1,6 +1,6 @@
 namespace Prevensomware.Dto
 {
-    public class DtoFileInfo
+    public class DtoFileInfo : DtoBase
     {
         public string OriginalExtension { get; set; }
         public string ReplacedExtension { get; set; }

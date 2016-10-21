@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using Prevensomware.Dto;
 using Prevensomware.Logic;
@@ -49,20 +50,22 @@ namespace Prevensomware.GUI
                 MessageBox.Show("Choose Path");
                 return;
             };
-            lblStatue.Text = "Working";
+            tbLog.Text += DateTime.Now + " Started.\r\n";
+
             SetWorkerThreads();
         }
 
         private void FileWorkerWorkCompleted(object sender, EventArgs e)
         {
-            lblStatue.Text = "Done";
+            tbLog.Text += DateTime.Now + " End.\r\n";
+
         }
 
         private void GetFileWorkerUpdateLog(string logEntry)
         {
             Invoke(new Action(() =>
             {
-                tbLog.Text += logEntry + "\n";
+                tbLog.Text += DateTime.Now + " " + logEntry + "\r\n";
             }));
         }
         private void SetWorkerThreads()
@@ -76,6 +79,11 @@ namespace Prevensomware.GUI
             fileWorker.RunWorkerCompleted += FileWorkerWorkCompleted;
             fileWorker.RunWorkerAsync();
 
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.Size = new Size(700,650);
         }
     }
 }
