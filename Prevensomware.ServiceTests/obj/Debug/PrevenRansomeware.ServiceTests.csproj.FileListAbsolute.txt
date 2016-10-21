@@ -1,0 +1,5 @@
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.ServiceTests\bin\Debug\PrevenRansomeware.ServiceTests.dll
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.ServiceTests\bin\Debug\PrevenRansomeware.ServiceTests.pdb
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.ServiceTests\obj\Debug\PrevenRansomeware.ServiceTests.csprojResolveAssemblyReference.cache
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.ServiceTests\obj\Debug\PrevenRansomeware.ServiceTests.dll
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.ServiceTests\obj\Debug\PrevenRansomeware.ServiceTests.pdb

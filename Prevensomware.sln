@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.GUI", "Prevensomware.GUI\Prevensomware.GUI.csproj", "{8F903408-C4CE-432B-9E04-6367419CF7EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.Logic", "Prevensomware.Logic\Prevensomware.Logic.csproj", "{8CBEAB5E-CCB5-4441-9CB7-B4BAD90D28AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.Service", "Prevensomware.Service\Prevensomware.Service.csproj", "{46F2DD83-3845-4CA3-937E-303A45C2119B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{688B697C-6363-43ED-AEA0-32CA57351665}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.LogicTests", "Prevensomware.LogicTests\Prevensomware.LogicTests.csproj", "{09617249-B026-455D-B17B-3F90B350D464}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.ServiceTests", "Prevensomware.ServiceTests\Prevensomware.ServiceTests.csproj", "{9F96C6F1-835D-4533-BE9F-63FC8B472639}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F903408-C4CE-432B-9E04-6367419CF7EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F903408-C4CE-432B-9E04-6367419CF7EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F903408-C4CE-432B-9E04-6367419CF7EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F903408-C4CE-432B-9E04-6367419CF7EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CBEAB5E-CCB5-4441-9CB7-B4BAD90D28AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CBEAB5E-CCB5-4441-9CB7-B4BAD90D28AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CBEAB5E-CCB5-4441-9CB7-B4BAD90D28AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CBEAB5E-CCB5-4441-9CB7-B4BAD90D28AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09617249-B026-455D-B17B-3F90B350D464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09617249-B026-455D-B17B-3F90B350D464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09617249-B026-455D-B17B-3F90B350D464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09617249-B026-455D-B17B-3F90B350D464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F96C6F1-835D-4533-BE9F-63FC8B472639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F96C6F1-835D-4533-BE9F-63FC8B472639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F96C6F1-835D-4533-BE9F-63FC8B472639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F96C6F1-835D-4533-BE9F-63FC8B472639}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{09617249-B026-455D-B17B-3F90B350D464} = {688B697C-6363-43ED-AEA0-32CA57351665}
+		{9F96C6F1-835D-4533-BE9F-63FC8B472639} = {688B697C-6363-43ED-AEA0-32CA57351665}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,5 @@
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.Logic\obj\Debug\PrevenRansomeware.Logic.csprojResolveAssemblyReference.cache
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.Logic\bin\Debug\Prevensomware.Logic.dll
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.Logic\bin\Debug\Prevensomware.Logic.pdb
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.Logic\obj\Debug\Prevensomware.Logic.dll
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.Logic\obj\Debug\Prevensomware.Logic.pdb

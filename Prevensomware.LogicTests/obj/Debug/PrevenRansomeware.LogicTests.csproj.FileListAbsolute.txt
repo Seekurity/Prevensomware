@@ -1,0 +1,5 @@
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.LogicTests\bin\Debug\PrevenRansomeware.LogicTests.dll
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.LogicTests\bin\Debug\PrevenRansomeware.LogicTests.pdb
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.LogicTests\obj\Debug\PrevenRansomeware.LogicTests.csprojResolveAssemblyReference.cache
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.LogicTests\obj\Debug\PrevenRansomeware.LogicTests.dll
+C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\PrevenRansomeware.LogicTests\obj\Debug\PrevenRansomeware.LogicTests.pdb
