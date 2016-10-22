@@ -36,6 +36,7 @@
             this.btnRenameExtensions = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnRevert = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbLog
@@ -102,12 +103,23 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Extensions And Replacement";
             // 
+            // btnRevert
+            // 
+            this.btnRevert.Location = new System.Drawing.Point(1388, 250);
+            this.btnRevert.Name = "btnRevert";
+            this.btnRevert.Size = new System.Drawing.Size(329, 71);
+            this.btnRevert.TabIndex = 13;
+            this.btnRevert.Text = "Revert Changes";
+            this.btnRevert.UseVisualStyleBackColor = true;
+            this.btnRevert.Click += new System.EventHandler(this.btnRevert_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1741, 1452);
+            this.Controls.Add(this.btnRevert);
             this.Controls.Add(this.tbLog);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -134,5 +146,6 @@
         private System.Windows.Forms.Button btnRenameExtensions;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnRevert;
     }
 }

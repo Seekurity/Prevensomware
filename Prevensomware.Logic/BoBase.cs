@@ -36,5 +36,10 @@ namespace Prevensomware.Logic
         {
             return Repository.GetList();
         }
+
+        public void RemoveList(IEnumerable<T> objList)
+        {
+            Repository.RemoveList(objList);
+        }
     }
 }

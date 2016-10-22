@@ -9,5 +9,7 @@ namespace Prevensomware.DA
         void Remove(T obj);
         T Get(int oid);
         IEnumerable<T> GetList();
+        void RemoveList(IEnumerable<T> objList);
+
     }
 }

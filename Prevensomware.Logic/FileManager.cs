@@ -88,5 +88,12 @@ namespace Prevensomware.Logic
                 LogDelegate(string.Format("File {0} changed to {1}.", filePath, newPath));
             }
         }
+        public static void RevertFileList(IEnumerable<DtoFileInfo> fileInfoList)
+        {
+            foreach (var fileInfo in fileInfoList)
+            {
+                File.Move(fileInfo.ReplacedPath, fileInfo.OriginalPath);
+            }
+        }
     }
 }

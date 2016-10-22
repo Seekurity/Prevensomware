@@ -31,13 +31,20 @@ namespace Prevensomware.GUI
             var extensionReplacementList = new List<DtoFileInfo>();
             foreach (var extensionReplacement in extensionReplacementArray)
             {
-                var name = extensionReplacement.Split(':')[0];
-                var replacement = extensionReplacement.Split(':')[1];
-                extensionReplacementList.Add(new DtoFileInfo
+                try
                 {
-                    OriginalExtension = name,
-                    ReplacedExtension = replacement
-                });
+                    var name = extensionReplacement.Split(':')[0];
+                    var replacement = extensionReplacement.Split(':')[1];
+                    extensionReplacementList.Add(new DtoFileInfo
+                    {
+                        OriginalExtension = name,
+                        ReplacedExtension = replacement
+                    });
+                }
+                catch
+                {
+                    MessageBox.Show("Payload Format Error");
+                }
             }
             return extensionReplacementList;
 
@@ -80,7 +87,12 @@ namespace Prevensomware.GUI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(700,650);
+            Size = new Size(700,650);
+        }
+
+        private void btnRevert_Click(object sender, EventArgs e)
+        {
+            new RevertChanges().ShowDialog();
         }
     }
 }

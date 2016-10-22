@@ -33,5 +33,15 @@ namespace Prevensomware.DA
         {
             return Session.QueryOver<T>().List();
         }
+
+        public void RemoveList(IEnumerable<T> objList)
+        {
+            using (var tx = Session.BeginTransaction())
+            {
+                foreach (var obj in objList)
+                    Session.Delete(obj);
+                tx.Commit();
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.Win32;
 using Prevensomware.Dto;
@@ -64,6 +65,25 @@ namespace Prevensomware.Logic
                 var newDtoRegistryValue = new DtoRegistryValue {CreateDateTime = DateTime.Now, Name = valueName, Value = value.ToString()};
                 dtoRegistryKey.AddRegistryValue(newDtoRegistryValue);
                 newSubKey.SetValue(valueName, value);
+            }
+        }
+
+        public static void RemoveParentRegistryKeyList(IEnumerable<DtoRegistryKey> dtoRegistryKeyList)
+        {
+            foreach (var dtoRegistryKey in dtoRegistryKeyList)
+            {
+                try
+                {
+                    Registry.ClassesRoot.DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
+                }catch{}
+                try
+                {
+                    Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes").DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
+                }catch{}
+                try
+                {
+                    Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes").DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
+                }catch{}
             }
         }
     }
