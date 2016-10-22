@@ -8,14 +8,17 @@ namespace Prevensomware.Logic
 {
     public static class FileManager
     {
-        public static Action<string> LogDelegate { get; set; } 
-        public static void RenameAllFilesWithNewExtension(IEnumerable<DtoFileInfo> fileInfoList, string directoryPath)
+        public static Action<string> LogDelegate { get; set; }
+        private static DtoLog _dtoLog;
+        public static void RenameAllFilesWithNewExtension(IEnumerable<DtoFileInfo> fileInfoList, string directoryPath, ref DtoLog dtoLog)
         {
+            _dtoLog = dtoLog;
             foreach (var fileInfo in fileInfoList)
             {
-                if (directoryPath == null) RenameFileListInWholeHardDrive(fileInfo);
+                if (directoryPath == "HD") RenameFileListInWholeHardDrive(fileInfo);
                 else RenameFileListForCertainPath(fileInfo,directoryPath);
             }
+            new BoLog().Save(_dtoLog);
         }
 
         private static void RenameFileListInWholeHardDrive(DtoFileInfo fileInfo)
@@ -79,6 +82,9 @@ namespace Prevensomware.Logic
             {
                 var newPath = Path.ChangeExtension(filePath, fileInfo.ReplacedExtension);
                 File.Move(filePath, newPath);
+                fileInfo.OriginalPath = filePath;
+                fileInfo.ReplacedPath = newPath;
+                _dtoLog.AddFile(fileInfo);
                 LogDelegate(string.Format("File {0} changed to {1}.", filePath, newPath));
             }
         }

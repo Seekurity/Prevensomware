@@ -31,7 +31,7 @@
             this.tbLog = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblPath = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbPayload = new System.Windows.Forms.TextBox();
             this.btnChoosePath = new System.Windows.Forms.Button();
             this.btnRenameExtensions = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -64,14 +64,14 @@
             this.lblPath.Size = new System.Drawing.Size(936, 40);
             this.lblPath.TabIndex = 9;
             // 
-            // textBox2
+            // tbPayload
             // 
-            this.textBox2.Location = new System.Drawing.Point(422, 54);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(930, 65);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.Text = ".doc:.blahdoc;.docx:.blahdocx";
+            this.tbPayload.Location = new System.Drawing.Point(422, 54);
+            this.tbPayload.Multiline = true;
+            this.tbPayload.Name = "tbPayload";
+            this.tbPayload.Size = new System.Drawing.Size(930, 65);
+            this.tbPayload.TabIndex = 8;
+            this.tbPayload.Text = ".doc:.blahdoc;.docx:.blahdocx";
             // 
             // btnChoosePath
             // 
@@ -112,7 +112,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblPath);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbPayload);
             this.Controls.Add(this.btnChoosePath);
             this.Controls.Add(this.btnRenameExtensions);
             this.Name = "MainForm";
@@ -129,7 +129,7 @@
         private System.Windows.Forms.TextBox tbLog;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPath;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbPayload;
         private System.Windows.Forms.Button btnChoosePath;
         private System.Windows.Forms.Button btnRenameExtensions;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;

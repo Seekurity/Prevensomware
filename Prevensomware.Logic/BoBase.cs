@@ -7,7 +7,7 @@ namespace Prevensomware.Logic
     public class BoBase<T> : IBo<T> where T : DtoBase
     {
         private IRepository<T> _repository;
-        public IRepository<T> Repository
+        protected IRepository<T> Repository
         {
             get
             {

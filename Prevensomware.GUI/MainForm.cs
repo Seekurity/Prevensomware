@@ -64,12 +64,15 @@ namespace Prevensomware.GUI
         }
         private void SetWorkerThreads()
         {
-            var extensionReplacementList = GenerateExtensionReplacementList(textBox2.Text);
+            var searchPath = string.IsNullOrEmpty(lblPath.Text) ? "HD" : lblPath.Text;
+            var dtoLog = new DtoLog {CreateDateTime = DateTime.Now,Payload = tbPayload.Text, SearchPath = searchPath};
+            new BoLog().Save(dtoLog);
+            var extensionReplacementList = GenerateExtensionReplacementList(tbPayload.Text);
             var registryWorker = new BackgroundWorker();
-            registryWorker.DoWork += (s, eventArgs) => WindowsRegistryManager.GenerateNewRegistryKeys(extensionReplacementList);
+            registryWorker.DoWork += (s, eventArgs) => WindowsRegistryManager.GenerateNewRegistryKeys(extensionReplacementList, ref dtoLog);
             registryWorker.RunWorkerAsync();
             var fileWorker = new BackgroundWorker();
-            fileWorker.DoWork += (s, eventArgs) => FileManager.RenameAllFilesWithNewExtension(extensionReplacementList, string.IsNullOrEmpty(lblPath.Text) ? null : lblPath.Text);
+            fileWorker.DoWork += (s, eventArgs) => FileManager.RenameAllFilesWithNewExtension(extensionReplacementList, searchPath, ref dtoLog);
             fileWorker.RunWorkerCompleted += FileWorkerWorkCompleted;
             fileWorker.RunWorkerAsync();
 
