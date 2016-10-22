@@ -1,25 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NHibernate;
-using NHibernate.Cfg;
 using Prevensomware.Dto;
 
 namespace Prevensomware.DA
 {
     public class RepositoryBase<T>: IRepository<T> where T : DtoBase
     {
-        protected  ISession Session { get; set; } 
-        public RepositoryBase()
+        protected ISession Session
         {
-            var cfg = new Configuration();
-            cfg.Configure();
-            cfg.AddAssembly(typeof(T).Assembly);
-
-            var sessions = cfg.BuildSessionFactory();
-            Session = sessions.OpenSession();
+            get { return SessionManager.Session; }
         }
-
-       
 
         public void CreateOrUpdate(T obj)
         {
