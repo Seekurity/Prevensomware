@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="Prevensomware.Dto"
+                  namespace="Prevensomware.Dto">
+
+  <class name="DtoRegistryKey" table="RegistryKey">
+    <id name="Oid" type="int">
+      <generator class="native" />
+    </id>
+    <property name="CreateDateTime" type="DateTime" />
+    
+    <many-to-one
+     name="ParentRegistryKey"
+     class="DtoRegistryKey"
+     cascade="save-update" >
+      <column name="IdParentRegistryKey"
+				 index="IX_PARENTREGISTRYKEY_REGISTRYKEY" />
+    </many-to-one>
+
+    <many-to-one
+     name="Log"
+     class="DtoLog"
+     cascade="save-update" >
+      <column name="IdLog"
+				 index="IX_LOG_LOG" />
+    </many-to-one>
+
+    <property name="Name" />
+
+
+    <bag name="RegistryKeyList" inverse="true" cascade="all">
+      <key column="IdParentRegistryKey" on-delete="cascade" />
+      <one-to-many class="DtoRegistryKey"/>
+    </bag>
+
+
+    <bag name="RegistryValueList" inverse="true" cascade="all">
+      <key column="IdParentRegistryKey" on-delete="cascade" />
+      <one-to-many class="DtoRegistryValue"/>
+    </bag>
+  </class>
+
+</hibernate-mapping>

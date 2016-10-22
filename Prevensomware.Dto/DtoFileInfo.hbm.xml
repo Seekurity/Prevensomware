@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="Prevensomware.Dto"
+                  namespace="Prevensomware.Dto">
+
+  <class name="DtoFileInfo" table="FileInfo">
+    <id name="Oid" type="int">
+      <generator class="native" />
+    </id>
+    <property name="CreateDateTime" type="DateTime" />
+    <property name="OriginalExtension" />
+    <property name="ReplacedExtension" />
+    <property name="OriginalPath" />
+    <property name="ReplacedPath" />
+    <many-to-one
+        name="Log"
+        class="DtoLog"
+        cascade="save-update">
+      <column name="IdLog"
+				 index="IX_LOG_LOG" />
+    </many-to-one>
+
+  </class>
+
+</hibernate-mapping>

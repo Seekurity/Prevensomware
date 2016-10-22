@@ -2,9 +2,10 @@ namespace Prevensomware.Dto
 {
     public class DtoFileInfo : DtoBase
     {
-        public string OriginalExtension { get; set; }
-        public string ReplacedExtension { get; set; }
-        public string OriginalPath { get; set; }
-        public string ReplacedPath { get; set; }
+        public virtual string OriginalExtension { get; set; }
+        public virtual string ReplacedExtension { get; set; }
+        public virtual string OriginalPath { get; set; }
+        public virtual string ReplacedPath { get; set; }
+        public virtual DtoLog Log { get; set; }
     }
 }

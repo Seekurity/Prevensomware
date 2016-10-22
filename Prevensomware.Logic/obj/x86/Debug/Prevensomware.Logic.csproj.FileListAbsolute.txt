@@ -1,0 +1,12 @@
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\x86\Debug\Prevensomeware_db.db
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\x86\Debug\Prevensomware.Logic.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\x86\Debug\Prevensomware.Logic.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\x86\Debug\Prevensomware.DA.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\x86\Debug\Prevensomware.Dto.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\x86\Debug\System.Data.SQLite.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\x86\Debug\Prevensomware.DA.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\x86\Debug\Prevensomware.Dto.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\x86\Debug\System.Data.SQLite.xml
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\obj\x86\Debug\Prevensomware.Logic.csprojResolveAssemblyReference.cache
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\obj\x86\Debug\Prevensomware.Logic.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\obj\x86\Debug\Prevensomware.Logic.pdb

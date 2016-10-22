@@ -1,0 +1,4 @@
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Dto\bin\x86\Debug\Prevensomware.Dto.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Dto\bin\x86\Debug\Prevensomware.Dto.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Dto\obj\x86\Debug\Prevensomware.Dto.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Dto\obj\x86\Debug\Prevensomware.Dto.pdb

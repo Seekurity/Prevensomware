@@ -4,12 +4,12 @@ namespace Prevensomware.Dto
 {
     public class DtoRegistryKey : DtoBase
     {
-        public DtoRegistryKey ParentRegistryKey { get; set; }
-        public string Name { get; set; }
-        public IList<DtoRegistryValue> RegistryValueList { get; set; }
-        public IList<DtoRegistryKey>  RegistryKeyList { get; set; }
-
-        public void AddRegistryKey(DtoRegistryKey dtoRegistryKey)
+        public virtual DtoRegistryKey ParentRegistryKey { get; set; }
+        public virtual string Name { get; set; }
+        public virtual IList<DtoRegistryValue> RegistryValueList { get; set; }
+        public virtual IList<DtoRegistryKey>  RegistryKeyList { get; set; }
+        public virtual DtoLog Log { get; set; }
+        public virtual void AddRegistryKey(DtoRegistryKey dtoRegistryKey)
         {
             lock (this)
             {
@@ -19,7 +19,7 @@ namespace Prevensomware.Dto
                 dtoRegistryKey.ParentRegistryKey = this;
             }
         }
-        public void AddRegistryValue(DtoRegistryValue dtoRegistryValue)
+        public virtual void AddRegistryValue(DtoRegistryValue dtoRegistryValue)
         {
             lock (this)
             {

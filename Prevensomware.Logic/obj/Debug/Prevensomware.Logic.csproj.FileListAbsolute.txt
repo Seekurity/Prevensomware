@@ -3,10 +3,21 @@ C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.Lo
 C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.Logic\obj\Debug\Prevensomware.Logic.csprojResolveAssemblyReference.cache
 C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.Logic\obj\Debug\Prevensomware.Logic.dll
 C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.Logic\obj\Debug\Prevensomware.Logic.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\System.Data.SQLite.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\Prevensomeware_db.db
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\hibernate.cfg.xml
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\x64\SQLite.Interop.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\x86\SQLite.Interop.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\Prevensomware.Logic.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\Prevensomware.Logic.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\Prevensomware.DA.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\Prevensomware.Dto.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\NHibernate.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\Iesi.Collections.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\Prevensomware.DA.pdb
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\Prevensomware.Dto.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\NHibernate.xml
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\Iesi.Collections.xml
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\obj\Debug\Prevensomware.Logic.csprojResolveAssemblyReference.cache
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\obj\Debug\Prevensomware.Logic.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\obj\Debug\Prevensomware.Logic.pdb
