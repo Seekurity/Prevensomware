@@ -45,13 +45,7 @@ namespace Prevensomware.GUI
 
         private void btnRenameExtensions_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(lblPath.Text))
-            {
-                MessageBox.Show("Choose Path");
-                return;
-            };
             tbLog.Text += DateTime.Now + " Started.\r\n";
-
             SetWorkerThreads();
         }
 
@@ -75,7 +69,7 @@ namespace Prevensomware.GUI
             registryWorker.DoWork += (s, eventArgs) => WindowsRegistryManager.GenerateNewRegistryKeys(extensionReplacementList);
             registryWorker.RunWorkerAsync();
             var fileWorker = new BackgroundWorker();
-            fileWorker.DoWork += (s, eventArgs) => FileManager.RenameAllFilesWithNewExtensionForCertainPath(extensionReplacementList, lblPath.Text);
+            fileWorker.DoWork += (s, eventArgs) => FileManager.RenameAllFilesWithNewExtension(extensionReplacementList, string.IsNullOrEmpty(lblPath.Text) ? null : lblPath.Text);
             fileWorker.RunWorkerCompleted += FileWorkerWorkCompleted;
             fileWorker.RunWorkerAsync();
 

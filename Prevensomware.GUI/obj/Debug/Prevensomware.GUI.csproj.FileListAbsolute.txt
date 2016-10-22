@@ -19,14 +19,8 @@ C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Preven
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.GUI.pdb
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.Dto.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.Logic.dll
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.DA.dll
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\NHibernate.dll
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Iesi.Collections.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.Dto.pdb
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.Logic.pdb
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.DA.pdb
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\NHibernate.xml
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Iesi.Collections.xml
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.csprojResolveAssemblyReference.cache
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.MainForm.resources
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.Properties.Resources.resources

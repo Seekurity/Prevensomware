@@ -40,9 +40,11 @@
             // 
             // tbLog
             // 
+            this.tbLog.BackColor = System.Drawing.Color.Gray;
             this.tbLog.Location = new System.Drawing.Point(37, 472);
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
+            this.tbLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbLog.Size = new System.Drawing.Size(1315, 944);
             this.tbLog.TabIndex = 12;
             // 
@@ -104,6 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1741, 1452);
             this.Controls.Add(this.tbLog);
             this.Controls.Add(this.label1);
@@ -114,7 +117,7 @@
             this.Controls.Add(this.btnRenameExtensions);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "Prevensomeware";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

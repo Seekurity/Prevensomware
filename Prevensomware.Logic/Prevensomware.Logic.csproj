@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBo.cs" />
+    <Compile Include="BoBase.cs" />
+    <Compile Include="BoFileInfo.cs" />
+    <Compile Include="BoRegistryValue.cs" />
+    <Compile Include="BoRegistryKey.cs" />
+    <Compile Include="BoLog.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowsRegistryManager.cs" />

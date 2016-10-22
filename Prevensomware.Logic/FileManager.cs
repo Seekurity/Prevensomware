@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Prevensomware.DA;
 using Prevensomware.Dto;
 
 namespace Prevensomware.Logic
@@ -10,36 +9,75 @@ namespace Prevensomware.Logic
     public static class FileManager
     {
         public static Action<string> LogDelegate { get; set; } 
-        public static void RenameAllFilesWithNewExtensionForCertainPath(IEnumerable<DtoFileInfo> extensionReplacementList, string directoryPath)
+        public static void RenameAllFilesWithNewExtension(IEnumerable<DtoFileInfo> fileInfoList, string directoryPath)
         {
-            //foreach (var extensionReplacement in extensionReplacementList)
-            //{
-            //    var allFilesArray = Directory.GetFiles(directoryPath, "*" + extensionReplacement.OriginalExtension, SearchOption.AllDirectories);
-            //    LogDelegate(string.Format("Found {0} Files.", allFilesArray.Count()));
-            //    RenameFileList(allFilesArray, extensionReplacement.ReplacedExtension);
-            //}
-            var newLog = new DtoLog
+            foreach (var fileInfo in fileInfoList)
             {
-                CreateDateTime =  DateTime.Now,
-                Payload = "ewew:ewew",
-                RegistryKeyList = new List<DtoRegistryKey>
-                {
-                    new DtoRegistryKey {Name = "ewew"}
-                }
-            };
-            var logrep = new LogRepository();
-            logrep.CreateOrUpdate(newLog);
-            var all = logrep.GetList();
-            var repo = new FileInfoRepository();
-           repo.CreateOrUpdate(new DtoFileInfo());
-            var ww = repo.GetList();
+                if (directoryPath == null) RenameFileListInWholeHardDrive(fileInfo);
+                else RenameFileListForCertainPath(fileInfo,directoryPath);
+            }
         }
 
-        private static void RenameFileList(IEnumerable<string> filePathList, string newExtension)
+        private static void RenameFileListInWholeHardDrive(DtoFileInfo fileInfo)
         {
-            foreach (var filePath in filePathList)
+            var fileList = new List<string>();
+            foreach (var drive in DriveInfo.GetDrives().Where(x => x.IsReady))
             {
-                var newPath = Path.ChangeExtension(filePath, newExtension);
+                try
+                {
+                    fileList.AddRange(GetFiles(drive.RootDirectory.FullName, "*"+fileInfo.OriginalExtension));
+                }
+                catch (Exception)
+                {
+                    LogDelegate("Couldn't change files in Drive "+ drive.Name);
+                }
+            }
+            LogDelegate(fileList.Count + " File/s Found.");
+            ChangeFileListExtensions(fileInfo, fileList);
+
+        }
+        public static IEnumerable<string> GetFiles(string root, string searchPattern)
+        {
+            var pending = new Stack<string>();
+            var files = new List<string>();
+            pending.Push(root);
+            while (pending.Count != 0)
+            {
+                var path = pending.Pop();
+                string[] next = null;
+                try
+                {
+                    next = Directory.GetFiles(path, searchPattern);
+                }
+                catch
+                {
+                    LogDelegate("Couldn't Get Files in "+ path);
+                }
+                if (next != null && next.Length != 0)
+                    foreach (var file in next) files.Add(file);
+                try
+                {
+                    next = Directory.GetDirectories(path);
+                    foreach (var subdir in next) pending.Push(subdir);
+                }
+                catch
+                {
+                    LogDelegate("Couldn't Get Directories in  "+ path);
+                }
+            }
+            return files;
+        }
+        private static void RenameFileListForCertainPath(DtoFileInfo fileInfo, string directoryPath)
+        {
+            var allFilesArray = GetFiles(directoryPath , "*" + fileInfo.OriginalExtension);
+            ChangeFileListExtensions(fileInfo, allFilesArray);
+        }
+
+        private static void ChangeFileListExtensions(DtoFileInfo fileInfo, IEnumerable<string> allFilesArray)
+        {
+            foreach (var filePath in allFilesArray)
+            {
+                var newPath = Path.ChangeExtension(filePath, fileInfo.ReplacedExtension);
                 File.Move(filePath, newPath);
                 LogDelegate(string.Format("File {0} changed to {1}.", filePath, newPath));
             }
