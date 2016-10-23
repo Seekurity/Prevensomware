@@ -95,5 +95,18 @@ namespace Prevensomware.Logic
                 File.Move(fileInfo.ReplacedPath, fileInfo.OriginalPath);
             }
         }
+
+        public static bool RevertOneFile(DtoFileInfo fileInfo)
+        {
+            try
+            {
+                File.Move(fileInfo.ReplacedPath, fileInfo.OriginalPath);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

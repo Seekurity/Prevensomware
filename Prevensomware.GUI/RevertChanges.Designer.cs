@@ -45,6 +45,7 @@
             this.gridLogs.RowTemplate.Height = 40;
             this.gridLogs.Size = new System.Drawing.Size(1213, 533);
             this.gridLogs.TabIndex = 0;
+            this.gridLogs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridLogs_CellClick);
             // 
             // btnRevert
             // 

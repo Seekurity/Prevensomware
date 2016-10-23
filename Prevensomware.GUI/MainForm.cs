@@ -12,10 +12,23 @@ namespace Prevensomware.GUI
     {
         public MainForm()
         {
+            var args = Environment.GetCommandLineArgs();
+            if (args.Length > 1)
+            {
+                ProcessCommandFromWindowsContextMenu(args[1]);
+            }
             InitializeComponent();
             FileManager.LogDelegate = GetFileWorkerUpdateLog;
+           
         }
 
+        private void ProcessCommandFromWindowsContextMenu(string filePath)
+        {
+            var isReverted = new BoFileInfo().RevertForPath(filePath);
+            if (isReverted) MessageBox.Show("File reverted succecssfully.");
+            else MessageBox.Show("Couldn't revert the file.");
+            this.Close();
+        }
         private void browseFileDialog_Click(object sender, EventArgs e)
         {
             var dialogResult = folderBrowserDialog1.ShowDialog();

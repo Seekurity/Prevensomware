@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Prevensomware.Dto;
 using Prevensomware.Logic;
@@ -56,6 +55,11 @@ namespace Prevensomware.GUI
             }
             MessageBox.Show("Changes are reverted.");
             Close();
+        }
+
+        private void gridLogs_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            gridLogs.Rows[e.RowIndex].Selected = true;
         }
     }
 }
