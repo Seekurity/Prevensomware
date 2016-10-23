@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.GUI", "Preven
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.Logic", "Prevensomware.Logic\Prevensomware.Logic.csproj", "{8CBEAB5E-CCB5-4441-9CB7-B4BAD90D28AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.Service", "Prevensomware.Service\Prevensomware.Service.csproj", "{46F2DD83-3845-4CA3-937E-303A45C2119B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{688B697C-6363-43ED-AEA0-32CA57351665}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomware.LogicTests", "Tests\Prevensomware.LogicTests\Prevensomware.LogicTests.csproj", "{09617249-B026-455D-B17B-3F90B350D464}"
@@ -22,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomeware.DtoTests", "Tests\Prevensomeware.DtoTests\Prevensomeware.DtoTests.csproj", "{30063DD8-0910-4C3C-834B-68F1011C26AB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomeware.DaTests", "Tests\Prevensomeware.DaTests\Prevensomeware.DaTests.csproj", "{5F9604F8-E5B3-487F-BAC3-57AFCFEEB1BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevensomeware.WindowsService", "Prevensomeware.WindowsService\Prevensomeware.WindowsService.csproj", "{16DDF080-CE19-4C55-955E-546FBEE89BFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,14 +47,6 @@ Global
 		{8CBEAB5E-CCB5-4441-9CB7-B4BAD90D28AD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CBEAB5E-CCB5-4441-9CB7-B4BAD90D28AD}.Release|x86.ActiveCfg = Release|x86
 		{8CBEAB5E-CCB5-4441-9CB7-B4BAD90D28AD}.Release|x86.Build.0 = Release|x86
-		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Debug|x86.ActiveCfg = Debug|x86
-		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Debug|x86.Build.0 = Debug|x86
-		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Release|x86.ActiveCfg = Release|x86
-		{46F2DD83-3845-4CA3-937E-303A45C2119B}.Release|x86.Build.0 = Release|x86
 		{09617249-B026-455D-B17B-3F90B350D464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{09617249-B026-455D-B17B-3F90B350D464}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09617249-B026-455D-B17B-3F90B350D464}.Debug|x86.ActiveCfg = Debug|x86
@@ -103,6 +95,14 @@ Global
 		{5F9604F8-E5B3-487F-BAC3-57AFCFEEB1BB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5F9604F8-E5B3-487F-BAC3-57AFCFEEB1BB}.Release|x86.ActiveCfg = Release|x86
 		{5F9604F8-E5B3-487F-BAC3-57AFCFEEB1BB}.Release|x86.Build.0 = Release|x86
+		{16DDF080-CE19-4C55-955E-546FBEE89BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16DDF080-CE19-4C55-955E-546FBEE89BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16DDF080-CE19-4C55-955E-546FBEE89BFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{16DDF080-CE19-4C55-955E-546FBEE89BFF}.Debug|x86.Build.0 = Debug|Any CPU
+		{16DDF080-CE19-4C55-955E-546FBEE89BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16DDF080-CE19-4C55-955E-546FBEE89BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16DDF080-CE19-4C55-955E-546FBEE89BFF}.Release|x86.ActiveCfg = Release|Any CPU
+		{16DDF080-CE19-4C55-955E-546FBEE89BFF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

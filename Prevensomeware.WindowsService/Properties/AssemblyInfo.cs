@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PrevenRansomeware.Service")]
+[assembly: AssemblyTitle("Prevensomeware.WindowsService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PrevenRansomeware.Service")]
+[assembly: AssemblyProduct("Prevensomeware.WindowsService")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("46f2dd83-3845-4ca3-937e-303a45c2119b")]
+[assembly: Guid("16ddf080-ce19-4c55-955e-546fbee89bff")]
 
 // Version information for an assembly consists of the following four values:
 //
