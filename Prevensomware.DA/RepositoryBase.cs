@@ -11,30 +11,30 @@ namespace Prevensomware.DA
             get { return SessionManager.Session; }
         }
 
-        public void CreateOrUpdate(T obj)
+        public virtual void CreateOrUpdate(T obj)
         {
             Session.Save(obj);
             Session.Flush();
         }
 
-        public void Remove(T obj)
+        public virtual void Remove(T obj)
         {
             Session.Delete(obj);
             Session.Flush();
         }
 
 
-        public T Get(int oid)
+        public virtual T Get(int oid)
         {
             return Session.QueryOver<T>().Where(x => x.Oid == oid).SingleOrDefault();
         }
 
-        public IEnumerable<T> GetList()
+        public virtual IEnumerable<T> GetList()
         {
             return Session.QueryOver<T>().List();
         }
 
-        public void RemoveList(IEnumerable<T> objList)
+        public virtual void RemoveList(IEnumerable<T> objList)
         {
             using (var tx = Session.BeginTransaction())
             {

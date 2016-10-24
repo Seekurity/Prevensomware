@@ -31,6 +31,7 @@ namespace Prevensomware.GUI
             gridLogs.Columns["Oid"].Visible = false;
             gridLogs.Columns["CreateDateTime"].DisplayIndex = 0;
             gridLogs.Columns["CreateDateTime"].HeaderText = "Created At";
+            gridLogs.Columns["IsReverted"].HeaderText = "Is Reverted";
 
             gridLogs.Columns["Payload"].DisplayIndex = 1;
             gridLogs.Columns["Payload"].HeaderText = "Query";
@@ -51,6 +52,11 @@ namespace Prevensomware.GUI
             foreach (DataGridViewRow selectedRow in gridLogs.SelectedRows)
             {
                  var dtoLog =logList.Single(x => x.Oid == Convert.ToInt32(selectedRow.Cells["Oid"].Value));
+                if (dtoLog.IsReverted)
+                {
+                    MessageBox.Show("Can't Revert Already Reverted Log.");
+                    return;
+                }
                  boLog.Revert(dtoLog);
             }
             MessageBox.Show("Changes are reverted.");

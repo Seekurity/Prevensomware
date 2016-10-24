@@ -10,7 +10,8 @@
     <property name="CreateDateTime" type="DateTime" />
     <property name="Payload" />
     <property name="SearchPath" />
-
+    <property name="IsReverted" type="boolean" />
+    
     <bag name="FileList" inverse="true" cascade="all">
       <key column="IdLog" on-delete="cascade" />
       <one-to-many class="DtoFileInfo"/>

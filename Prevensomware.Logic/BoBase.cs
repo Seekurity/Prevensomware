@@ -17,27 +17,27 @@ namespace Prevensomware.Logic
             }
         }
 
-        public void Save(T obj)
+        public virtual void Save(T obj)
         {
             Repository.CreateOrUpdate(obj);
         }
 
-        public void Remove(T obj)
+        public virtual void Remove(T obj)
         {
             Repository.Remove(obj);
         }
 
-        public T Get(int oid)
+        public virtual T Get(int oid)
         {
             return Repository.Get(oid);
         }
 
-        public IEnumerable<T> GetList()
+        public virtual IEnumerable<T> GetList()
         {
             return Repository.GetList();
         }
 
-        public void RemoveList(IEnumerable<T> objList)
+        public virtual void RemoveList(IEnumerable<T> objList)
         {
             Repository.RemoveList(objList);
         }

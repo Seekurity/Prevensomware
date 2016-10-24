@@ -6,7 +6,7 @@ using Prevensomware.Dto;
 
 namespace Prevensomware.Logic
 {
-    public class BoRegistryValue : BoBase<DtoRegistryKey>
+    public class BoRegistryValue : BoBase<DtoRegistryValue>
     {
     }
 }

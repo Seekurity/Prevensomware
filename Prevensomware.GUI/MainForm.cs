@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.ServiceProcess;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
 using Prevensomware.Dto;
@@ -29,15 +28,7 @@ namespace Prevensomware.GUI
             var isReverted = new BoFileInfo().RevertForPath(filePath);
             if (isReverted) MessageBox.Show("File reverted succecssfully.");
             else MessageBox.Show("Couldn't revert the file.");
-            this.Close();
-        }
-        private void browseFileDialog_Click(object sender, EventArgs e)
-        {
-            var dialogResult = folderBrowserDialog1.ShowDialog();
-            if (dialogResult == DialogResult.OK)
-            {
-                lblPath.Text = folderBrowserDialog1.SelectedPath;
-            }
+            Environment.Exit(Environment.ExitCode);
         }
 
         private IEnumerable<DtoFileInfo> GeneratFileInfoList(string listTxt)
@@ -65,15 +56,14 @@ namespace Prevensomware.GUI
 
         }
 
-        private void btnRenameExtensions_Click(object sender, EventArgs e)
+        private void btnStart_Click(object sender, EventArgs e)
         {
-            tbLog.Text += DateTime.Now + " Started.\r\n";
             SetWorkerThreads();
         }
 
         private void FileWorkerWorkCompleted(object sender, EventArgs e)
         {
-            tbLog.Text += DateTime.Now + " End.\r\n";
+            tbLog.AppendText(DateTime.Now + "\tEnd.\r\n");
 
         }
 
@@ -81,20 +71,30 @@ namespace Prevensomware.GUI
         {
             Invoke(new Action(() =>
             {
-                tbLog.Text += DateTime.Now + " " + logEntry + "\r\n";
+                tbLog.AppendText(DateTime.Now + "\t" + logEntry + "\r\n");
             }));
         }
         private void SetWorkerThreads()
         {
-            var searchPath = string.IsNullOrEmpty(lblPath.Text) ? "HD" : lblPath.Text;
+            string searchPath;
+            if (radioBtnHDD.Checked)
+                searchPath = "HD";
+            else if (!string.IsNullOrEmpty(lblPath.Text))
+                searchPath = lblPath.Text;
+            else
+            {
+                MessageBox.Show("Choose Search Path.");
+                return;
+            }
+            tbLog.AppendText(DateTime.Now + "\tStarted.\r\n");
             var dtoLog = new DtoLog {CreateDateTime = DateTime.Now,Payload = tbPayload.Text, SearchPath = searchPath};
             new BoLog().Save(dtoLog);
-            var extensionReplacementList = GeneratFileInfoList(tbPayload.Text);
+            var fileInfoList = GeneratFileInfoList(tbPayload.Text);
             var registryWorker = new BackgroundWorker();
-            registryWorker.DoWork += (s, eventArgs) => WindowsRegistryManager.GenerateNewRegistryKeys(extensionReplacementList, ref dtoLog);
+            registryWorker.DoWork += (s, eventArgs) => WindowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
             registryWorker.RunWorkerAsync();
             var fileWorker = new BackgroundWorker();
-            fileWorker.DoWork += (s, eventArgs) => FileManager.RenameAllFilesWithNewExtension(extensionReplacementList, searchPath, ref dtoLog);
+            fileWorker.DoWork += (s, eventArgs) => FileManager.RenameAllFilesWithNewExtension(fileInfoList, searchPath, ref dtoLog);
             fileWorker.RunWorkerCompleted += FileWorkerWorkCompleted;
             fileWorker.RunWorkerAsync();
 
@@ -102,13 +102,28 @@ namespace Prevensomware.GUI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Size = new Size(700,650);
+            Size = new Size(900,650);
             AutoUpdater.Start("http://seekurity.com/Appcast.xml");
         }
 
         private void btnRevert_Click(object sender, EventArgs e)
         {
             new RevertChanges().ShowDialog();
+        }
+
+        private void radioButton2_Clicked(object sender, EventArgs e)
+        {
+            if (!radioBtnPath.Checked) return;
+            var dialogResult = folderBrowserDialog1.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                lblPath.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
+
+        private void radioBtnHDD_Click(object sender, EventArgs e)
+        {
+            lblPath.Text = string.Empty;
         }
     }
 }

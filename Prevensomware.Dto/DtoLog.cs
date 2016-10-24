@@ -8,6 +8,7 @@ namespace Prevensomware.Dto
         public virtual IList<DtoFileInfo> FileList { get; set; }
         public virtual IList<DtoRegistryKey> RegistryKeyList { get; set; }
         public virtual string Payload { get; set; }
+        public virtual bool IsReverted { get; set; }
         public virtual string SearchPath { get; set; }
         public virtual void AddRegistryKey(DtoRegistryKey dtoRegistryKey)
         {

@@ -1,4 +1,5 @@
-﻿using Prevensomware.DA;
+﻿using System.IO;
+using Prevensomware.DA;
 using Prevensomware.Dto;
 
 namespace Prevensomware.Logic
@@ -7,13 +8,9 @@ namespace Prevensomware.Logic
     {
         public bool RevertForPath(string path)
         {
-            var fileInfo = new FileInfoRepository().LoadWithPath(path);
-            if (fileInfo == null) return false;
-            var isReverted = FileManager.RevertOneFile(fileInfo);
-            if (!isReverted) return false;
-            fileInfo.Log = null;
-            Remove(fileInfo);
-            return true;
+            var fileExtension = Path.GetExtension(path);
+            var fileInfo = new FileInfoRepository().LoadWithExtension(fileExtension);
+            return fileInfo != null && FileManager.ChangeFileExtension(fileInfo.OriginalExtension, path);
         }
     }
 }

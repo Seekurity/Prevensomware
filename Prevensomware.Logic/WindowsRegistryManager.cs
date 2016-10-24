@@ -10,6 +10,9 @@ namespace Prevensomware.Logic
     public static class WindowsRegistryManager
     {
         private static DtoLog _dtoLog;
+        private static BoRegistryKey boRegistryKey = new BoRegistryKey();
+        private static BoRegistryValue boRegistryValue = new BoRegistryValue();
+
         public static void GenerateNewRegistryKeys(IEnumerable<DtoFileInfo> fileInfoList, ref DtoLog dtoLog)
         {
             _dtoLog = dtoLog;
@@ -28,6 +31,7 @@ namespace Prevensomware.Logic
             if (mainSubKey == null || registryKey.GetSubKeyNames().Any(keyName => keyName == dtoFileInfo.ReplacedExtension)) return;
             var newsubKey = registryKey.CreateSubKey(dtoFileInfo.ReplacedExtension);
             var dtoRegistryKey = new DtoRegistryKey {CreateDateTime = DateTime.Now, Name = newsubKey.Name};
+            boRegistryKey.Save(dtoRegistryKey);
             _dtoLog.AddRegistryKey(dtoRegistryKey);
             CloneRegKeysAndValues(mainSubKey, newsubKey, dtoRegistryKey);
         }
@@ -52,7 +56,9 @@ namespace Prevensomware.Logic
             {
                 var newSubKey = newKey.CreateSubKey(subKeyName);
                 var newSubDtoRegistryKey = new DtoRegistryKey { CreateDateTime = DateTime.Now, Name = newSubKey.Name };
+                boRegistryKey.Save(newSubDtoRegistryKey);
                 dtoRegistryKey.AddRegistryKey(newSubDtoRegistryKey);
+                boRegistryKey.Save(dtoRegistryKey);
                 var newMainSubKey = mainKey.OpenSubKey(subKeyName, true);
                 CloneRegKeysAndValues(newMainSubKey, newSubKey, newSubDtoRegistryKey);
             }
@@ -63,7 +69,9 @@ namespace Prevensomware.Logic
             {
                 var value = subKey.GetValue(valueName);
                 var newDtoRegistryValue = new DtoRegistryValue {CreateDateTime = DateTime.Now, Name = valueName, Value = value.ToString()};
+                boRegistryValue.Save(newDtoRegistryValue);
                 dtoRegistryKey.AddRegistryValue(newDtoRegistryValue);
+                boRegistryKey.Save(dtoRegistryKey);
                 newSubKey.SetValue(valueName, value);
             }
         }
@@ -78,11 +86,11 @@ namespace Prevensomware.Logic
                 }catch{}
                 try
                 {
-                    Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes").DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
+                    Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes",true).DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
                 }catch{}
                 try
                 {
-                    Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes").DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
+                    Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes",true).DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
                 }catch{}
             }
         }
