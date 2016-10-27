@@ -20,6 +20,7 @@ namespace Prevensomware.Logic
             {
                 CloneClassesRootKeys(Registry.ClassesRoot, fileInfo);
                 CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes",true), fileInfo);
+                CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts", true), fileInfo);
                 CloneClassesRootKeys(Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes",true), fileInfo);
             }
             new BoLog().Save(_dtoLog);
@@ -27,7 +28,7 @@ namespace Prevensomware.Logic
 
         private static void CloneClassesRootKeys(RegistryKey registryKey, DtoFileInfo dtoFileInfo)
         {
-            var mainSubKey = registryKey.OpenSubKey(dtoFileInfo.OriginalExtension, true);
+            var mainSubKey = registryKey?.OpenSubKey(dtoFileInfo.OriginalExtension, true);
             if (mainSubKey == null || registryKey.GetSubKeyNames().Any(keyName => keyName == dtoFileInfo.ReplacedExtension)) return;
             var newsubKey = registryKey.CreateSubKey(dtoFileInfo.ReplacedExtension);
             var dtoRegistryKey = new DtoRegistryKey {CreateDateTime = DateTime.Now, Name = newsubKey.Name};

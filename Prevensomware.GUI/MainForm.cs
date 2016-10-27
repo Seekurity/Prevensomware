@@ -11,6 +11,9 @@ namespace Prevensomware.GUI
 {
     public partial class MainForm : Form
     {
+        private DtoLog _dtoLog;
+        private IEnumerable<DtoFileInfo> _fileInfoList;
+        private string _searchPath;
         public MainForm()
         {
             var args = Environment.GetCommandLineArgs();
@@ -67,6 +70,13 @@ namespace Prevensomware.GUI
 
         }
 
+        private void WindowsRegistryManagerWorkCompleted(object sender, EventArgs e)
+        {
+            var fileWorker = new BackgroundWorker();
+            fileWorker.DoWork += (s, eventArgs) => FileManager.RenameAllFilesWithNewExtension(_fileInfoList, _searchPath, ref _dtoLog);
+            fileWorker.RunWorkerCompleted += FileWorkerWorkCompleted;
+            fileWorker.RunWorkerAsync();
+        }
         private void LogChanges(string logEntry)
         {
             Invoke(new Action(() =>
@@ -90,16 +100,15 @@ namespace Prevensomware.GUI
             var dtoLog = new DtoLog {CreateDateTime = DateTime.Now,Payload = tbPayload.Text, SearchPath = searchPath};
             new BoLog().Save(dtoLog);
             var fileInfoList = GeneratFileInfoList(tbPayload.Text);
+            _dtoLog = dtoLog;
+            _searchPath = searchPath;
+            _fileInfoList = fileInfoList;
             var registryWorker = new BackgroundWorker();
             registryWorker.DoWork += (s, eventArgs) => WindowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
+            registryWorker.RunWorkerCompleted += WindowsRegistryManagerWorkCompleted;
             registryWorker.RunWorkerAsync();
-            var fileWorker = new BackgroundWorker();
-            fileWorker.DoWork += (s, eventArgs) => FileManager.RenameAllFilesWithNewExtension(fileInfoList, searchPath, ref dtoLog);
-            fileWorker.RunWorkerCompleted += FileWorkerWorkCompleted;
-            fileWorker.RunWorkerAsync();
-
         }
-
+        
         private void MainForm_Load(object sender, EventArgs e)
         {
             Size = new Size(900,650);

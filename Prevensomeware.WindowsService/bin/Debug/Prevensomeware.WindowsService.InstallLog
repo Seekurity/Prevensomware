@@ -1,0 +1,428 @@
+﻿Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Während der Rollbackphase des Installers System.Diagnostics.EventLogInstaller ist eine Ausnahme aufgetreten.
+System.Security.SecurityException: Die Quelle wurde nicht gefunden, aber einige oder alle Ereignisprotokolle konnten nicht durchsucht werden. Protokolle, auf die kein Zugriff möglich war: Security.
+Während der Rollbackphase der Installation ist eine Ausnahme aufgetreten. Diese Ausnahme wird ignoriert, und der Rollback wird fortgesetzt. Der ursprüngliche Zustand des Computers wird jedoch möglicherweise nicht vollständig wiederhergestellt, nachdem der Rollback beendet ist.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Dienst Prevensomeware wurde installiert.
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird ausgeführt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Der Dienst Prevensomeware wird vom System entfernt...
+Dienst Prevensomeware wurde vom System entfernt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Dienst Prevensomeware wurde installiert.
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird ausgeführt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Der Dienst Prevensomeware wird vom System entfernt...
+Dienst Prevensomeware wurde vom System entfernt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Warnung: Die Quelle Prevensomeware ist nicht auf dem lokalen Computer registriert.
+Der Dienst Prevensomeware wird vom System entfernt...
+Während der Deinstallation des Installers System.ServiceProcess.ServiceInstaller ist eine Ausnahme aufgetreten.
+System.ComponentModel.Win32Exception: Der angegebene Dienst ist kein installierter Dienst
+Während der Deinstallation ist eine Ausnahme aufgetreten. Diese Ausnahme wird ignoriert, und die Deinstallation wird fortgesetzt. Die Anwendung wird jedoch möglicherweise nicht vollständig deinstalliert.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Dienst Prevensomeware wurde installiert.
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird ausgeführt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Der Dienst Prevensomeware wird vom System entfernt...
+Dienst Prevensomeware wurde vom System entfernt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Dienst Prevensomeware wurde installiert.
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird ausgeführt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Der Dienst Prevensomeware wird vom System entfernt...
+Dienst Prevensomeware wurde vom System entfernt.
+Es wird versucht, den Dienst Prevensomeware zu beenden.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Warnung: Die Quelle Prevensomeware ist nicht auf dem lokalen Computer registriert.
+Der Dienst Prevensomeware wird vom System entfernt...
+Dienst Prevensomeware wurde vom System entfernt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Warnung: Die Quelle Prevensomeware ist nicht auf dem lokalen Computer registriert.
+Der Dienst Prevensomeware wird vom System entfernt...
+Dienst Prevensomeware wurde vom System entfernt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Warnung: Die Quelle Prevensomeware ist nicht auf dem lokalen Computer registriert.
+Der Dienst Prevensomeware wird vom System entfernt...
+Dienst Prevensomeware wurde vom System entfernt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird zurückgesetzt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Der vorherige Zustand des Ereignisprotokolls für die Quelle Prevensomeware wird wiederhergestellt.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Warnung: Die Quelle Prevensomeware ist nicht auf dem lokalen Computer registriert.
+Der Dienst Prevensomeware wird vom System entfernt...
+Während der Deinstallation des Installers System.ServiceProcess.ServiceInstaller ist eine Ausnahme aufgetreten.
+System.ComponentModel.Win32Exception: Der angegebene Dienst ist kein installierter Dienst
+Während der Deinstallation ist eine Ausnahme aufgetreten. Diese Ausnahme wird ignoriert, und die Deinstallation wird fortgesetzt. Die Anwendung wird jedoch möglicherweise nicht vollständig deinstalliert.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Warnung: Die Quelle Prevensomeware ist nicht auf dem lokalen Computer registriert.
+Der Dienst Prevensomeware wird vom System entfernt...
+Während der Deinstallation des Installers System.ServiceProcess.ServiceInstaller ist eine Ausnahme aufgetreten.
+System.ComponentModel.Win32Exception: Der angegebene Dienst ist kein installierter Dienst
+Während der Deinstallation ist eine Ausnahme aufgetreten. Diese Ausnahme wird ignoriert, und die Deinstallation wird fortgesetzt. Die Anwendung wird jedoch möglicherweise nicht vollständig deinstalliert.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Warnung: Die Quelle Prevensomeware ist nicht auf dem lokalen Computer registriert.
+Der Dienst Prevensomeware wird vom System entfernt...
+Während der Deinstallation des Installers System.ServiceProcess.ServiceInstaller ist eine Ausnahme aufgetreten.
+System.ComponentModel.Win32Exception: Der angegebene Dienst ist kein installierter Dienst
+Während der Deinstallation ist eine Ausnahme aufgetreten. Diese Ausnahme wird ignoriert, und die Deinstallation wird fortgesetzt. Die Anwendung wird jedoch möglicherweise nicht vollständig deinstalliert.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Warnung: Die Quelle Prevensomeware ist nicht auf dem lokalen Computer registriert.
+Der Dienst Prevensomeware wird vom System entfernt...
+Während der Deinstallation des Installers System.ServiceProcess.ServiceInstaller ist eine Ausnahme aufgetreten.
+System.ComponentModel.Win32Exception: Der angegebene Dienst ist kein installierter Dienst
+Während der Deinstallation ist eine Ausnahme aufgetreten. Diese Ausnahme wird ignoriert, und die Deinstallation wird fortgesetzt. Die Anwendung wird jedoch möglicherweise nicht vollständig deinstalliert.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Dienst Prevensomeware wurde installiert.
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird ausgeführt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Der Dienst Prevensomeware wird vom System entfernt...
+Dienst Prevensomeware wurde vom System entfernt.
+Es wird versucht, den Dienst Prevensomeware zu beenden.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Dienst Prevensomeware wurde installiert.
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird ausgeführt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Der Dienst Prevensomeware wird vom System entfernt...
+Dienst Prevensomeware wurde vom System entfernt.
+Es wird versucht, den Dienst Prevensomeware zu beenden.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Dienst Prevensomeware wurde installiert.
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird ausgeführt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird deinstalliert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Die EventLog-Quelle Prevensomeware wird entfernt.
+Der Dienst Prevensomeware wird vom System entfernt...
+Dienst Prevensomeware wurde vom System entfernt.
+Es wird versucht, den Dienst Prevensomeware zu beenden.
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird installiert.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
+Dienst Prevensomeware wird installiert...
+Dienst Prevensomeware wurde installiert.
+Die EventLog-Quelle Prevensomeware im Protokoll Application wird erstellt...
+Assembly C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe wird ausgeführt.
+Betroffene Parameter:
+   logtoconsole = 
+   logfile = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.InstallLog
+   assemblypath = C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe

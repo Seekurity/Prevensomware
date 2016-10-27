@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
@@ -19,7 +20,13 @@ namespace Prevensomeware.WindowsService
             {
                 new PrevensomewareScheduler()
             };
-            ServiceBase.Run(ServicesToRun);
+            if (!Environment.UserInteractive)
+                ServiceBase.Run(ServicesToRun);
+            else
+            {
+                string[] args = {"10", ".html:.wwhtml", @"C:\Users\thewh\Desktop\Schule\7_10\Meine Webseite" };
+                new PrevensomewareScheduler().myDebug(args);
+            }
         }
     }
 }

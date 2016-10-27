@@ -17,11 +17,23 @@ namespace Prevensomeware.WindowsService
             InitializeComponent();
         }
 
+        public void myDebug(string[] args)
+        {
+            payLoad = args[1];
+            searchPath = args[2];
+            var fileInfoList = GenerateFileInfoList(payLoad);
+            var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = payLoad, SearchPath = searchPath };
+            new BoLog().Save(dtoLog);
+            FileManager.LogDelegate = LogChanges;
+            WindowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
+            FileManager.RenameAllFilesWithNewExtension(fileInfoList, searchPath, ref dtoLog);
+
+        }
         protected override void OnStart(string[] args)
         {
             payLoad = args[1];
             searchPath = args[2];
-            timer = new Timer {Interval = int.Parse(args[0])*3600000};
+            timer = new Timer { Interval = int.Parse(args[0]) * 3600000 };
             timer.Elapsed += Timer_Elapsed;
             timer.Enabled = true;
         }
