@@ -82,9 +82,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="Prevensomeware_db.db">
+    <None Include="Prevensomeware_db.xrtyzwm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Prevensomware.Dto\Prevensomware.Dto.csproj">

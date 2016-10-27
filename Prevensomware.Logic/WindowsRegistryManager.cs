@@ -7,17 +7,19 @@ using Prevensomware.Dto;
 
 namespace Prevensomware.Logic
 {
-    public static class WindowsRegistryManager
+    public class WindowsRegistryManager
     {
-        private static DtoLog _dtoLog;
-        private static BoRegistryKey boRegistryKey = new BoRegistryKey();
-        private static BoRegistryValue boRegistryValue = new BoRegistryValue();
+        public Action<string> LogDelegate { get; set; }
+        private DtoLog _dtoLog;
+        private BoRegistryKey boRegistryKey = new BoRegistryKey();
+        private BoRegistryValue boRegistryValue = new BoRegistryValue();
 
-        public static void GenerateNewRegistryKeys(IEnumerable<DtoFileInfo> fileInfoList, ref DtoLog dtoLog)
+        public void GenerateNewRegistryKeys(IEnumerable<DtoFileInfo> fileInfoList, ref DtoLog dtoLog)
         {
             _dtoLog = dtoLog;
             foreach (var fileInfo in fileInfoList)
             {
+                LogDelegate?.Invoke($"Registering Extension {fileInfo.ReplacedExtension}");
                 CloneClassesRootKeys(Registry.ClassesRoot, fileInfo);
                 CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes",true), fileInfo);
                 CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts", true), fileInfo);
@@ -26,7 +28,7 @@ namespace Prevensomware.Logic
             new BoLog().Save(_dtoLog);
         }
 
-        private static void CloneClassesRootKeys(RegistryKey registryKey, DtoFileInfo dtoFileInfo)
+        private void CloneClassesRootKeys(RegistryKey registryKey, DtoFileInfo dtoFileInfo)
         {
             var mainSubKey = registryKey?.OpenSubKey(dtoFileInfo.OriginalExtension, true);
             if (mainSubKey == null || registryKey.GetSubKeyNames().Any(keyName => keyName == dtoFileInfo.ReplacedExtension)) return;
@@ -37,7 +39,7 @@ namespace Prevensomware.Logic
             CloneRegKeysAndValues(mainSubKey, newsubKey, dtoRegistryKey);
         }
 
-        private static void CloneRegKeysAndValues(RegistryKey mainSubKey, RegistryKey newsubKey,DtoRegistryKey dtoRegistryKey)
+        private void CloneRegKeysAndValues(RegistryKey mainSubKey, RegistryKey newsubKey,DtoRegistryKey dtoRegistryKey)
         {
             var subKeyList = mainSubKey.GetSubKeyNames();
             var subValueList = mainSubKey.GetValueNames();
@@ -51,7 +53,7 @@ namespace Prevensomware.Logic
             }
         }
 
-        private static void CloneSubKeyList(IEnumerable<string> subKeyNamesList, RegistryKey mainKey, RegistryKey newKey, DtoRegistryKey dtoRegistryKey)
+        private void CloneSubKeyList(IEnumerable<string> subKeyNamesList, RegistryKey mainKey, RegistryKey newKey, DtoRegistryKey dtoRegistryKey)
         {
             foreach (var subKeyName in subKeyNamesList)
             {
@@ -64,7 +66,7 @@ namespace Prevensomware.Logic
                 CloneRegKeysAndValues(newMainSubKey, newSubKey, newSubDtoRegistryKey);
             }
         }
-        private static void CloneValueList(IEnumerable<string> valueNamesList, RegistryKey subKey, RegistryKey newSubKey, DtoRegistryKey dtoRegistryKey)
+        private void CloneValueList(IEnumerable<string> valueNamesList, RegistryKey subKey, RegistryKey newSubKey, DtoRegistryKey dtoRegistryKey)
         {
             foreach (var valueName in valueNamesList)
             {
@@ -77,7 +79,7 @@ namespace Prevensomware.Logic
             }
         }
 
-        public static void RemoveParentRegistryKeyList(IEnumerable<DtoRegistryKey> dtoRegistryKeyList)
+        public void RemoveParentRegistryKeyList(IEnumerable<DtoRegistryKey> dtoRegistryKeyList)
         {
             foreach (var dtoRegistryKey in dtoRegistryKeyList)
             {
@@ -89,6 +91,11 @@ namespace Prevensomware.Logic
                 {
                     Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes",true).DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
                 }catch{}
+                try
+                {
+                    Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts", true).DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
+                }
+                catch { }
                 try
                 {
                     Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes",true).DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));

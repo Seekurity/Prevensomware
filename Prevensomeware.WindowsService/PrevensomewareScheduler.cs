@@ -12,9 +12,13 @@ namespace Prevensomeware.WindowsService
         private Timer timer;
         private string payLoad;
         private string searchPath;
+        private readonly WindowsRegistryManager _windowsRegistryManager;
+        private readonly FileManager _fileManager;
         public PrevensomewareScheduler()
         {
             InitializeComponent();
+            _windowsRegistryManager = new WindowsRegistryManager();
+            _fileManager = new FileManager();
         }
 
         public void myDebug(string[] args)
@@ -24,9 +28,9 @@ namespace Prevensomeware.WindowsService
             var fileInfoList = GenerateFileInfoList(payLoad);
             var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = payLoad, SearchPath = searchPath };
             new BoLog().Save(dtoLog);
-            FileManager.LogDelegate = LogChanges;
-            WindowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
-            FileManager.RenameAllFilesWithNewExtension(fileInfoList, searchPath, ref dtoLog);
+            _fileManager.LogDelegate = LogChanges;
+            _windowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
+            _fileManager.RenameAllFilesWithNewExtension(fileInfoList, searchPath, ref dtoLog);
 
         }
         protected override void OnStart(string[] args)
@@ -43,9 +47,9 @@ namespace Prevensomeware.WindowsService
             var fileInfoList = GenerateFileInfoList(payLoad);
             var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = payLoad, SearchPath = searchPath };
             new BoLog().Save(dtoLog);
-            FileManager.LogDelegate = LogChanges;
-            WindowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
-            FileManager.RenameAllFilesWithNewExtension(fileInfoList, searchPath, ref dtoLog);
+            _fileManager.LogDelegate = LogChanges;
+            _windowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
+            _fileManager.RenameAllFilesWithNewExtension(fileInfoList, searchPath, ref dtoLog);
         }
         private void LogChanges(string logEntry)
         {

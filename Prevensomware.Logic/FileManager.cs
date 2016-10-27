@@ -6,11 +6,11 @@ using Prevensomware.Dto;
 
 namespace Prevensomware.Logic
 {
-    public static class FileManager
+    public class FileManager
     {
-        public static Action<string> LogDelegate { get; set; }
-        private static DtoLog _dtoLog;
-        public static void RenameAllFilesWithNewExtension(IEnumerable<DtoFileInfo> fileInfoList, string directoryPath, ref DtoLog dtoLog)
+        public Action<string> LogDelegate { get; set; }
+        private DtoLog _dtoLog;
+        public void RenameAllFilesWithNewExtension(IEnumerable<DtoFileInfo> fileInfoList, string directoryPath, ref DtoLog dtoLog)
         {
             _dtoLog = dtoLog;
             foreach (var fileInfo in fileInfoList)
@@ -21,11 +21,11 @@ namespace Prevensomware.Logic
             new BoLog().Save(_dtoLog);
         }
 
-        private static void RenameFileListInWholeHardDrive(DtoFileInfo fileInfo)
+        private void RenameFileListInWholeHardDrive(DtoFileInfo fileInfo)
         {
             ChangeFileListExtensions(fileInfo.ReplacedExtension, SearchFileListInWholeHardDrive(fileInfo.OriginalExtension, LogDelegate));
         }
-        public static IEnumerable<string> SearchFileListInWholeHardDrive(string extension, Action<string> logDelegate = null)
+        public IEnumerable<string> SearchFileListInWholeHardDrive(string extension, Action<string> logDelegate = null)
         {
             var fileList = new List<string>();
             foreach (var drive in DriveInfo.GetDrives().Where(x => x.IsReady))
@@ -42,7 +42,7 @@ namespace Prevensomware.Logic
             }
             return fileList;
         }
-        public static IEnumerable<string> GetFiles(string root, string searchPattern, Action<string> logDelegate = null)
+        public IEnumerable<string> GetFiles(string root, string searchPattern, Action<string> logDelegate = null)
         {
             var pending = new Stack<string>();
             var files = new List<string>();
@@ -76,14 +76,14 @@ namespace Prevensomware.Logic
             logDelegate?.Invoke(files.Count + " File/s Found.");
             return files;
         }
-        private static void RenameFileListForCertainPath(DtoFileInfo fileInfo, string directoryPath)
+        private void RenameFileListForCertainPath(DtoFileInfo fileInfo, string directoryPath)
         {
             var allFilesArray = GetFiles(directoryPath , "*" + fileInfo.OriginalExtension, LogDelegate);
             ChangeFileListExtensions(fileInfo.ReplacedExtension, allFilesArray, LogDelegate);
             _dtoLog.AddFile(fileInfo);
         }
 
-        public static void ChangeFileListExtensions(string extension, IEnumerable<string> allFilesArray, Action<string> logDelegate = null)
+        public void ChangeFileListExtensions(string extension, IEnumerable<string> allFilesArray, Action<string> logDelegate = null)
         {
             foreach (var filePath in allFilesArray)
             {
@@ -91,7 +91,7 @@ namespace Prevensomware.Logic
             }
         }
 
-        public static bool ChangeFileExtension(string extension, string filePath, Action<string> logDelegate = null)
+        public bool ChangeFileExtension(string extension, string filePath, Action<string> logDelegate = null)
         {
             try
             {

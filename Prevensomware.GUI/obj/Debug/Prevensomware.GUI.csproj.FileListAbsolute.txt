@@ -10,13 +10,13 @@ C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.GU
 C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.exe
 C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.pdb
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\System.Data.SQLite.dll
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomeware_db.db
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomeware_db.xrtyzwm
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\hibernate.cfg.xml
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\x64\SQLite.Interop.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\x86\SQLite.Interop.dll
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.GUI.exe.config
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.GUI.exe
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.GUI.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.exe.config
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.exe
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.pdb
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\AutoUpdater.NET.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.Dto.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\bin\Debug\Prevensomware.Logic.dll
@@ -45,5 +45,5 @@ C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Preven
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.Properties.Resources.resources
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.RevertChanges.resources
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.csproj.GenerateResource.Cache
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.exe
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.GUI.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.exe
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.GUI\obj\Debug\Prevensomware.pdb

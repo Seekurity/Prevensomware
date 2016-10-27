@@ -14,16 +14,20 @@ namespace Prevensomware.GUI
         private DtoLog _dtoLog;
         private IEnumerable<DtoFileInfo> _fileInfoList;
         private string _searchPath;
+        private readonly FileManager _fileManager;
+        private readonly WindowsRegistryManager _windowsRegistryManager;
         public MainForm()
         {
+            _fileManager = new FileManager();
+            _windowsRegistryManager = new WindowsRegistryManager();
             var args = Environment.GetCommandLineArgs();
             if (args.Length > 1)
             {
                 ProcessCommandFromWindowsContextMenu(args[1]);
             }
             InitializeComponent();
-            FileManager.LogDelegate = LogChanges;
-           
+            _fileManager.LogDelegate = LogChanges;
+            _windowsRegistryManager.LogDelegate = LogChanges;
         }
 
         private void ProcessCommandFromWindowsContextMenu(string filePath)
@@ -73,7 +77,7 @@ namespace Prevensomware.GUI
         private void WindowsRegistryManagerWorkCompleted(object sender, EventArgs e)
         {
             var fileWorker = new BackgroundWorker();
-            fileWorker.DoWork += (s, eventArgs) => FileManager.RenameAllFilesWithNewExtension(_fileInfoList, _searchPath, ref _dtoLog);
+            fileWorker.DoWork += (s, eventArgs) => _fileManager.RenameAllFilesWithNewExtension(_fileInfoList, _searchPath, ref _dtoLog);
             fileWorker.RunWorkerCompleted += FileWorkerWorkCompleted;
             fileWorker.RunWorkerAsync();
         }
@@ -104,7 +108,7 @@ namespace Prevensomware.GUI
             _searchPath = searchPath;
             _fileInfoList = fileInfoList;
             var registryWorker = new BackgroundWorker();
-            registryWorker.DoWork += (s, eventArgs) => WindowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
+            registryWorker.DoWork += (s, eventArgs) => _windowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
             registryWorker.RunWorkerCompleted += WindowsRegistryManagerWorkCompleted;
             registryWorker.RunWorkerAsync();
         }
