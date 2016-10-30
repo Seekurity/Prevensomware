@@ -9,9 +9,9 @@ namespace Prevensomeware.WindowsService
 {
     public partial class PrevensomewareScheduler : ServiceBase
     {
-        private Timer timer;
-        private string payLoad;
-        private string searchPath;
+        private Timer _timer;
+        private string _payLoad;
+        private string _searchPath;
         private readonly WindowsRegistryManager _windowsRegistryManager;
         private readonly FileManager _fileManager;
         public PrevensomewareScheduler()
@@ -21,35 +21,35 @@ namespace Prevensomeware.WindowsService
             _fileManager = new FileManager();
         }
 
-        public void myDebug(string[] args)
+        public void DebugService(string[] args)
         {
-            payLoad = args[1];
-            searchPath = args[2];
-            var fileInfoList = GenerateFileInfoList(payLoad);
-            var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = payLoad, SearchPath = searchPath };
+            _payLoad = args[1];
+            _searchPath = args[2];
+            var fileInfoList = GenerateFileInfoList(_payLoad);
+            var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = _payLoad, SearchPath = _searchPath };
             new BoLog().Save(dtoLog);
             _fileManager.LogDelegate = LogChanges;
             _windowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
-            _fileManager.RenameAllFilesWithNewExtension(fileInfoList, searchPath, ref dtoLog);
+            _fileManager.RenameAllFilesWithNewExtension(fileInfoList, _searchPath, ref dtoLog);
 
         }
         protected override void OnStart(string[] args)
         {
-            payLoad = args[1];
-            searchPath = args[2];
-            timer = new Timer { Interval = int.Parse(args[0]) * 3600000 };
-            timer.Elapsed += Timer_Elapsed;
-            timer.Enabled = true;
+            _payLoad = args[1];
+            _searchPath = args[2];
+            _timer = new Timer { Interval = int.Parse(args[0]) * 3600000 };
+            _timer.Elapsed += Timer_Elapsed;
+            _timer.Enabled = true;
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            var fileInfoList = GenerateFileInfoList(payLoad);
-            var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = payLoad, SearchPath = searchPath };
+            var fileInfoList = GenerateFileInfoList(_payLoad);
+            var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = _payLoad, SearchPath = _searchPath };
             new BoLog().Save(dtoLog);
             _fileManager.LogDelegate = LogChanges;
             _windowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
-            _fileManager.RenameAllFilesWithNewExtension(fileInfoList, searchPath, ref dtoLog);
+            _fileManager.RenameAllFilesWithNewExtension(fileInfoList, _searchPath, ref dtoLog);
         }
         private void LogChanges(string logEntry)
         {
@@ -81,7 +81,7 @@ namespace Prevensomeware.WindowsService
 
         protected override void OnStop()
         {
-            timer.Enabled = false;
+            _timer.Enabled = false;
         }
     }
 }

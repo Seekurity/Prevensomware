@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using Prevensomware.GUI.Properties;
 
 namespace Prevensomware.GUI
 {

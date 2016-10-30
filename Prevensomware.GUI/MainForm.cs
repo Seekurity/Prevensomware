@@ -59,6 +59,7 @@ namespace Prevensomware.GUI
                     MessageBox.Show("Payload Format Error");
                 }
             }
+            LogChanges($"Found {fileInfoList.Count} Extensions.");
             return fileInfoList;
 
         }

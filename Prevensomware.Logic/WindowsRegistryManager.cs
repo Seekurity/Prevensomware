@@ -21,22 +21,33 @@ namespace Prevensomware.Logic
             {
                 LogDelegate?.Invoke($"Registering Extension {fileInfo.ReplacedExtension}");
                 CloneClassesRootKeys(Registry.ClassesRoot, fileInfo);
-                CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes",true), fileInfo);
-                CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts", true), fileInfo);
-                CloneClassesRootKeys(Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes",true), fileInfo);
+                CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes",RegistryKeyPermissionCheck.ReadWriteSubTree), fileInfo);
+                CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts", RegistryKeyPermissionCheck.ReadWriteSubTree), fileInfo);
+                CloneClassesRootKeys(Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes", RegistryKeyPermissionCheck.ReadWriteSubTree), fileInfo);
             }
             new BoLog().Save(_dtoLog);
         }
 
         private void CloneClassesRootKeys(RegistryKey registryKey, DtoFileInfo dtoFileInfo)
         {
-            var mainSubKey = registryKey?.OpenSubKey(dtoFileInfo.OriginalExtension, true);
-            if (mainSubKey == null || registryKey.GetSubKeyNames().Any(keyName => keyName == dtoFileInfo.ReplacedExtension)) return;
-            var newsubKey = registryKey.CreateSubKey(dtoFileInfo.ReplacedExtension);
-            var dtoRegistryKey = new DtoRegistryKey {CreateDateTime = DateTime.Now, Name = newsubKey.Name};
-            boRegistryKey.Save(dtoRegistryKey);
-            _dtoLog.AddRegistryKey(dtoRegistryKey);
+            RegistryKey mainSubKey, newsubKey;
+            DtoRegistryKey dtoRegistryKey;
+            try
+            {
+                mainSubKey = registryKey?.OpenSubKey(dtoFileInfo.OriginalExtension, RegistryKeyPermissionCheck.ReadWriteSubTree);
+                if (mainSubKey == null ||
+                    registryKey.GetSubKeyNames().Any(keyName => keyName == dtoFileInfo.ReplacedExtension)) return;
+                newsubKey = registryKey.CreateSubKey(dtoFileInfo.ReplacedExtension);
+                dtoRegistryKey = new DtoRegistryKey {CreateDateTime = DateTime.Now, Name = newsubKey.Name};
+                boRegistryKey.Save(dtoRegistryKey);
+                _dtoLog.AddRegistryKey(dtoRegistryKey);
+            }
+            catch (Exception e)
+            {
+                return;
+            }
             CloneRegKeysAndValues(mainSubKey, newsubKey, dtoRegistryKey);
+
         }
 
         private void CloneRegKeysAndValues(RegistryKey mainSubKey, RegistryKey newsubKey,DtoRegistryKey dtoRegistryKey)
@@ -62,7 +73,15 @@ namespace Prevensomware.Logic
                 boRegistryKey.Save(newSubDtoRegistryKey);
                 dtoRegistryKey.AddRegistryKey(newSubDtoRegistryKey);
                 boRegistryKey.Save(dtoRegistryKey);
-                var newMainSubKey = mainKey.OpenSubKey(subKeyName, true);
+                RegistryKey newMainSubKey;
+                try
+                {
+                    newMainSubKey = mainKey.OpenSubKey(subKeyName, RegistryKeyPermissionCheck.ReadWriteSubTree);
+                }
+                catch (Exception e)
+                {
+                    return;
+                }
                 CloneRegKeysAndValues(newMainSubKey, newSubKey, newSubDtoRegistryKey);
             }
         }
@@ -86,20 +105,31 @@ namespace Prevensomware.Logic
                 try
                 {
                     Registry.ClassesRoot.DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
-                }catch{}
-                try
-                {
-                    Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes",true).DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
-                }catch{}
-                try
-                {
-                    Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts", true).DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
                 }
-                catch { }
+                catch (Exception e)
+                {
+                }
                 try
                 {
-                    Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes",true).DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
-                }catch{}
+                    Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes", RegistryKeyPermissionCheck.ReadWriteSubTree).DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
+                }
+                catch (Exception e)
+                {
+                }
+                try
+                {
+                    Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts", RegistryKeyPermissionCheck.ReadWriteSubTree).DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
+                }
+                catch (Exception e)
+                {
+                }
+                try
+                {
+                    Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes", RegistryKeyPermissionCheck.ReadWriteSubTree).DeleteSubKeyTree(Path.GetFileName(dtoRegistryKey.Name));
+                }
+                catch (Exception e)
+                {
+                }
             }
         }
     }

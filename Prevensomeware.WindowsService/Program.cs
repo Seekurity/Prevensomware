@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Prevensomeware.WindowsService
 {
@@ -25,7 +20,7 @@ namespace Prevensomeware.WindowsService
             else
             {
                 string[] args = {"10", ".html:.wwhtml", @"C:\Users\thewh\Desktop\Schule\7_10\Meine Webseite" };
-                new PrevensomewareScheduler().myDebug(args);
+                new PrevensomewareScheduler().DebugService(args);
             }
         }
     }
