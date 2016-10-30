@@ -1,0 +1,14 @@
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\Prevensomware.WPFGUI.exe.config
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\Prevensomware.WPFGUI.exe
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\Prevensomware.WPFGUI.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Prevensomware.WPFGUI.csprojResolveAssemblyReference.cache
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\MainWindow.g.cs
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\App.g.cs
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Prevensomware.WPFGUI_MarkupCompile.cache
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Prevensomware.WPFGUI_MarkupCompile.lref
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\MainWindow.baml
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Prevensomware.WPFGUI.g.resources
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Prevensomware.WPFGUI.Properties.Resources.resources
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Prevensomware.WPFGUI.csproj.GenerateResource.Cache
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Prevensomware.WPFGUI.exe
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Prevensomware.WPFGUI.pdb
