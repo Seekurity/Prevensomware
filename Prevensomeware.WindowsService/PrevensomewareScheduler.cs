@@ -35,6 +35,8 @@ namespace Prevensomeware.WindowsService
         }
         protected override void OnStart(string[] args)
         {
+            if (args.Length != 3)
+                throw new Exception("Invalid Service arguments number.");
             _payLoad = args[1];
             _searchPath = args[2];
             _timer = new Timer { Interval = int.Parse(args[0]) * 3600000 };

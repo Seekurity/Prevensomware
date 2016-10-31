@@ -45,9 +45,40 @@
                         <ColumnDefinition Width="115*"/>
                         <ColumnDefinition Width="257*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="150.8,20,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnStart_Click">
+                    <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="96" Margin="150.8,20,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnStart_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
+                                    <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF707070"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF6495ED"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
                     </Button>
-                    <Button x:Name="BtnRevertAll" Content="Revert All" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="150.8,215,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnRevertAll_Click"/>
+                    <Button x:Name="BtnRevertAll" Content="Revert All" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="96" Margin="150.8,215,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnRevertAll_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
+                                    <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF707070"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF6495ED"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                        </Button>
                     <GroupBox x:Name="groupBox" Header="Choose Path" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,20,0,0" Width="244" Height="44" Grid.ColumnSpan="4" Foreground="White">
                         <StackPanel Orientation="Horizontal">
                             <RadioButton x:Name="RadioBtnHdd" Content="Hard Drive"  Foreground="White" Click="RadioBtnHdd_Click"/>
@@ -55,7 +86,22 @@
                         </StackPanel>
                     </GroupBox>
                     <Label x:Name="LblPath" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,64,0,0" Width="244" Grid.ColumnSpan="4" Foreground="White"/>
-                    <DataGrid x:Name="dataGridLogs" IsReadOnly="True" HorizontalAlignment="Left" AutoGenerateColumns="False" VerticalAlignment="Top" Grid.ColumnSpan="4" Height="141" Width="474" Margin="10,69,0,0" Background="#FF3B3B3E" ItemsSource="{Binding logList, Mode=TwoWay}">
+                    <DataGrid x:Name="dataGridLogs" IsReadOnly="True" HorizontalAlignment="Left" AutoGenerateColumns="False" VerticalAlignment="Top" Grid.ColumnSpan="4" Height="141" Width="474" Margin="10,69,0,0" Background="#FF3B3B3E" ItemsSource="{Binding logList, Mode=TwoWay}" LostFocus="dataGridLogs_LostFocus">
+
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="#FF222224" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Style>
+                            <Style TargetType="{x:Type DataGridRowHeader}">
+                                <Setter Property="Background" Value="#FF222224" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Style>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Setter Property="Background" Value="#FF222224" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Style>
+                        </DataGrid.Resources>
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Oid}" Visibility="Hidden"/>
                             <DataGridTextColumn Binding="{Binding CreateDateTime}" Header="Created At" Width="100"/>
@@ -63,8 +109,46 @@
                             <DataGridTextColumn Binding="{Binding Payload}" Header="Payload" Width="120"/>
                             <DataGridTextColumn Binding="{Binding SearchPath}" Header="Search Path" Width="180"/>
                         </DataGrid.Columns>
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger  Property="IsSelected" Value="true">
+                                        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                                        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                    </Trigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+                                            <Condition Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}, Path=IsKeyboardFocusWithin}" Value="False" />
+                                        </MultiDataTrigger.Conditions>
+                                        <MultiDataTrigger.Setters>
+                                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                        </MultiDataTrigger.Setters>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
                     </DataGrid>
-                    <Button x:Name="BtnRevertSelected" Content="Revert Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="49.4,215,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnRevertSelected_Click"/>
+                    <Button x:Name="BtnRevertSelected" Content="Revert Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="96" Margin="49.4,215,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnRevertSelected_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
+                                    <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF707070"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF6495ED"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Advanced" Foreground="White">
@@ -76,12 +160,44 @@
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="TxtServiceInterval" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="91.913,10,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1"/>
                     <Label x:Name="label" Content="Scheduler Interval" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,0" Foreground="White" Grid.ColumnSpan="2"/>
-                    <ListBox x:Name="ListExtensions" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="147" Margin="91.913,75,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1"/>
+                    <ListBox x:Name="ListExtensions" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="173" Margin="92,75,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1" SelectionChanged="ListExtensions_SelectionChanged"/>
                     <Label x:Name="label_Copy" Content="Extensions List" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,75,0,0" Foreground="White" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="TxtAddExtension" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Margin="91.913,41,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1"/>
+                    <TextBox x:Name="TxtExtension" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="92,41,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1"/>
                     <Label x:Name="label_Copy1" Content="Add Extension" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0" Foreground="White" Grid.ColumnSpan="2"/>
-                    <Button x:Name="BtnAddExtension" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="180.913,41,0,0" Height="23" Background="#FF3B3B3E" Foreground="White" Click="BtnAddExtension_Click" Grid.Column="1"/>
-                    <Button x:Name="BtnSetServiceInterval" Content="Set" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="180.913,10,0,0" Height="23" Foreground="White" Background="#FF3B3B3E" Grid.Column="1"/>
+                    <Button x:Name="BtnAddExtension" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="144,41,0,0" Height="23" Background="#FF3B3B3E" Foreground="White" Click="BtnAddExtension_Click" Grid.Column="1">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
+                                    <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF707070"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF6495ED"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="BtnSetServiceInterval" Content="Set" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="207,10,0,0" Height="23" Foreground="White" Background="#FF3B3B3E" Grid.Column="1">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
+                                    <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF707070"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF6495ED"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                     <Label x:Name="label_Copy2" Content="hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="143.913,6,0,0" Width="32" Foreground="White" Grid.Column="1"/>
                     <Label x:Name="label1" Content="Service Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,8,0,0" Grid.Column="2" Foreground="White"/>
                     <Label x:Name="label1_Copy" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,34,0,0" Grid.Column="2" Width="51" Foreground="White"/>
@@ -92,6 +208,23 @@
                     <Label x:Name="LabelNextServiceRun" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,96,0,0" Grid.Column="2" Width="27" Foreground="White"/>
                     <Label x:Name="label1_Copy6" Content="Service will run in:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,96,0,0" Grid.Column="2" Width="107" Foreground="White"/>
                     <Label x:Name="label1_Copy7" Content="hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,96,0,0" Grid.Column="2" Width="27" Foreground="White"/>
+                    <Button x:Name="BtnRemoveExtension" Content="Remove" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="207,41,0,0" Height="23" Background="#FF3B3B3E" Foreground="White" Click="BtnRemoveExtension_Click" Grid.Column="1">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
+                                    <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF707070"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF6495ED"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="About" Foreground="White">
@@ -106,7 +239,23 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button x:Name="BtnClearLog" Content="Clear Log" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="73,533,0,0" Grid.Column="1" Background="#FF3B3B3E" Foreground="White" Click="BtnClearLog_Click"/>
+        <Button x:Name="BtnClearLog" Content="Clear Log" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="96" Margin="73,533,0,0" Grid.Column="1" Background="#FF3B3B3E" Foreground="White" Click="BtnClearLog_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
+                        <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FF707070"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FF6495ED"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
         <Button x:Name="BtnEnd" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="33" Grid.Column="1" Margin="159.4,0,0,0" Background="#FFDD4E41" Foreground="White" Click="BtnEnd_Click"/>
         <Label x:Name="label2" Content="Prevensomware" HorizontalAlignment="Left" VerticalAlignment="Top" Height="62" Width="358" Foreground="#FF8B8B92" FontSize="43" FontFamily="Tahoma" FontWeight="Bold" Grid.ColumnSpan="2" Margin="8,0,0,0"/>

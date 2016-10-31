@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Media;
 using AutoUpdaterDotNET;
 using Microsoft.Win32;
 using Prevensomware.Dto;
@@ -102,7 +103,7 @@ namespace Prevensomware.WPFGUI
                     MessageBox.Show("Payload Format Error");
                 }
             }
-            LogChanges($"Found {fileInfoList.Count} Extensions.", LogType.Info);
+            LogChanges($"You currently have {fileInfoList.Count} extensions.", LogType.Info);
             return fileInfoList;
         }
         private void FileWorkerWorkCompleted(object sender, EventArgs e)
@@ -153,6 +154,7 @@ namespace Prevensomware.WPFGUI
                 MessageBox.Show("Choose Search Path.");
                 return;
             }
+            BtnStart.IsEnabled = false;
             TxtLog.AppendText(DateTime.Now + "\tStarted.\r\n");
             var fileInfoList = GeneratFileInfoList();
             var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = _payLoad, SearchPath = searchPath };
@@ -204,19 +206,15 @@ namespace Prevensomware.WPFGUI
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
-            BtnStart.IsEnabled = false;
             SetWorkerThreads();
         }
 
         private void BtnAddExtension_Click(object sender, RoutedEventArgs e)
         {
-            if (!ListExtensions.Items.Contains(TxtAddExtension.Text))
-            {
-                ListExtensions.Items.Insert(0, TxtAddExtension.Text);
-                GeneratFileInfoList();
-            }
-            else
-                MessageBox.Show("Extension already exists.");
+            if (ListExtensions.Items.Contains(TxtExtension.Text) || string.IsNullOrEmpty(TxtExtension.Text)) return;
+            ListExtensions.Items.Insert(0, TxtExtension.Text);
+            GeneratFileInfoList();
+            TxtExtension.Clear();
         }
 
         private void BtnClearLog_Click(object sender, RoutedEventArgs e)
@@ -275,6 +273,27 @@ namespace Prevensomware.WPFGUI
                 Dispatcher.Invoke(new Action(() =>dataGridLogs.ItemsSource = logList));
             };
             backgroundWorker.RunWorkerAsync();
+        }
+
+        private void dataGridLogs_LostFocus(object sender, RoutedEventArgs e)
+        {
+            dataGridLogs.RowBackground = new SolidColorBrush(Color.FromArgb(255,34,34,36));
+        }
+
+        private void BtnRemoveExtension_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ListExtensions.Items.Contains(TxtExtension.Text)) return;
+            ListExtensions.Items.Remove(TxtExtension.Text);
+            GeneratFileInfoList();
+            TxtExtension.Clear();
+        }
+
+        private void ListExtensions_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems != null && e.AddedItems.Count == 1)
+            {
+                TxtExtension.Text = e.AddedItems[0].ToString();
+            }
         }
     }
     
