@@ -9,7 +9,7 @@ namespace Prevensomware.Logic
 {
     public class WindowsRegistryManager
     {
-        public Action<string> LogDelegate { get; set; }
+        public Action<string,LogType> LogDelegate { get; set; }
         private DtoLog _dtoLog;
         private BoRegistryKey boRegistryKey = new BoRegistryKey();
         private BoRegistryValue boRegistryValue = new BoRegistryValue();
@@ -19,7 +19,7 @@ namespace Prevensomware.Logic
             _dtoLog = dtoLog;
             foreach (var fileInfo in fileInfoList)
             {
-                LogDelegate?.Invoke($"Registering Extension {fileInfo.ReplacedExtension}");
+                LogDelegate?.Invoke($"Registering Extension {fileInfo.ReplacedExtension}",LogType.Success);
                 CloneClassesRootKeys(Registry.ClassesRoot, fileInfo);
                 CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Classes",RegistryKeyPermissionCheck.ReadWriteSubTree), fileInfo);
                 CloneClassesRootKeys(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts", RegistryKeyPermissionCheck.ReadWriteSubTree), fileInfo);

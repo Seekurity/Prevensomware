@@ -1,3 +1,8 @@
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\System.Data.SQLite.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware_db.xrtyzwm
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\hibernate.cfg.xml
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\x64\SQLite.Interop.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\x86\SQLite.Interop.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe.config
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.exe
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.WindowsService\bin\Debug\Prevensomeware.WindowsService.pdb

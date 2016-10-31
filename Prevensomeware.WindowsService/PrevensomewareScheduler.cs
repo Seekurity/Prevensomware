@@ -51,7 +51,7 @@ namespace Prevensomeware.WindowsService
             _windowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
             _fileManager.RenameAllFilesWithNewExtension(fileInfoList, _searchPath, ref dtoLog);
         }
-        private void LogChanges(string logEntry)
+        private void LogChanges(string logEntry, LogType logType)
         {
            
         }

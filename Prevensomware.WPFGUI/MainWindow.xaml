@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prevensomware.WPFGUI"
         mc:Ignorable="d"
-        Title="Prevensomware" Height="563.211" Width="521.574" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FFCACAF0" Foreground="#FF16161B" BorderBrush="#FFD39696" MouseDown="MainFrm_MouseDown">
-    <Grid Background="#FF2D2D30" MouseDown="Grid_MouseDown">
+        Title="Prevensomware" Height="563.211" Width="521.574" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FFCACAF0" Foreground="#FF16161B" BorderBrush="#FFD39696" MouseDown="MainFrm_MouseDown" Loaded="MainFrm_Loaded">
+    <Grid Background="#FF2D2D30">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="329*"/>
             <ColumnDefinition Width="191*"/>
         </Grid.ColumnDefinitions>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="273" VerticalAlignment="Top" Width="500" Margin="10,106,0,0" Grid.ColumnSpan="2" SelectionChanged="tabControl_SelectionChanged" Background="#FF222224" Foreground="White">
+        <TabControl x:Name="TabControl" HorizontalAlignment="Left" Height="273" VerticalAlignment="Top" Width="500" Margin="10,106,0,0" Grid.ColumnSpan="2" Background="#FF222224" Foreground="White">
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabPanel}">
                     <Setter Property="HorizontalAlignment" Value="Left" />
@@ -40,60 +40,76 @@
             <TabItem Header="General" Foreground="White">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="237*"/>
+                        <ColumnDefinition Width="87*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="115*"/>
                         <ColumnDefinition Width="257*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="151.187,20,0,0" Grid.Column="1" Background="#FF3B3B3E" Foreground="White">
+                    <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="150.8,20,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnStart_Click">
                     </Button>
-                    <Button x:Name="BtnRevert" Content="Revert Changes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="151.187,45,0,0" Grid.Column="1" Background="#FF3B3B3E" Foreground="White"/>
-                    <GroupBox x:Name="groupBox" Header="Choose Path" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,20,0,0" Width="244" Height="44" Grid.ColumnSpan="2" Foreground="White">
+                    <Button x:Name="BtnRevertAll" Content="Revert All" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="150.8,215,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnRevertAll_Click"/>
+                    <GroupBox x:Name="groupBox" Header="Choose Path" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,20,0,0" Width="244" Height="44" Grid.ColumnSpan="4" Foreground="White">
                         <StackPanel Orientation="Horizontal">
-                            <RadioButton x:Name="RadioBtnHdd" Content="Hard Drive"  IsChecked="True" Foreground="White"/>
-                            <RadioButton x:Name="RadioBtnPath" Content="Choose Path" Foreground="White" />
+                            <RadioButton x:Name="RadioBtnHdd" Content="Hard Drive"  Foreground="White" Click="RadioBtnHdd_Click"/>
+                            <RadioButton x:Name="RadioBtnPath" Content="Choose Path" Foreground="White" Click="RadioBtnPath_Click" Margin="60,0,0,0" />
                         </StackPanel>
                     </GroupBox>
+                    <Label x:Name="LblPath" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,64,0,0" Width="244" Grid.ColumnSpan="4" Foreground="White"/>
+                    <DataGrid x:Name="dataGridLogs" IsReadOnly="True" HorizontalAlignment="Left" AutoGenerateColumns="False" VerticalAlignment="Top" Grid.ColumnSpan="4" Height="141" Width="474" Margin="10,69,0,0" Background="#FF3B3B3E" ItemsSource="{Binding logList, Mode=TwoWay}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Oid}" Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding CreateDateTime}" Header="Created At" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding IsReverted}" Header="Is Reverted" Width="70"/>
+                            <DataGridTextColumn Binding="{Binding Payload}" Header="Payload" Width="120"/>
+                            <DataGridTextColumn Binding="{Binding SearchPath}" Header="Search Path" Width="180"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="BtnRevertSelected" Content="Revert Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="49.4,215,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnRevertSelected_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Advanced" Foreground="White">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="158*"/>
+                        <ColumnDefinition Width="14*"/>
+                        <ColumnDefinition Width="144*"/>
                         <ColumnDefinition Width="89*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="TxtServiceInterval" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="120,10,0,0" Background="#FF3B3B3E" Foreground="White"/>
-                    <Label x:Name="label" Content="Scheduler Interval" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,0" Foreground="White"/>
-                    <ListBox x:Name="ListExtensions" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="147" Margin="120,75,0,0" Background="#FF3B3B3E" Foreground="White"/>
-                    <Label x:Name="label_Copy" Content="Extensions List" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,75,0,0" Foreground="White"/>
-                    <TextBox x:Name="TxtAddExtension" PreviewTextInput="TxtAddExtension_OnPreviewTextInputValidationTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Margin="120,41,0,0" Background="#FF3B3B3E" Foreground="White"/>
-                    <Label x:Name="label_Copy1" Content="Add Extension" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0" Foreground="White"/>
-                    <Button x:Name="BtnAddExtension" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="209,41,0,0" Height="23" Background="#FF3B3B3E" Foreground="White"/>
-                    <Button x:Name="BtnSetServiceInterval" Content="Set" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="209,10,0,0" Height="23" Foreground="White" Background="#FF3B3B3E"/>
-                    <Label x:Name="label_Copy2" Content="hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="172,6,0,0" Width="32" Foreground="White"/>
-                    <Label x:Name="label1" Content="Service Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,8,0,0" Grid.Column="1" Foreground="White"/>
-                    <Label x:Name="label1_Copy" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,34,0,0" Grid.Column="1" Width="51" Foreground="White"/>
-                    <Label x:Name="LabelServiceStatus" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,34,0,0" Grid.Column="1" Width="51" Foreground="White"/>
-                    <Label x:Name="LabelServiceCurrentInterval" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,65,0,0" Grid.Column="1" Width="27" Foreground="White"/>
-                    <Label x:Name="label1_Copy3" Content="Current Interval:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,65,0,0" Grid.Column="1" Width="95" Foreground="White"/>
-                    <Label x:Name="label1_Copy4" Content="hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,65,0,0" Grid.Column="1" Width="27" Foreground="White"/>
-                    <Label x:Name="LabelNextServiceRun" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,96,0,0" Grid.Column="1" Width="27" Foreground="White"/>
-                    <Label x:Name="label1_Copy6" Content="Service will run in:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,96,0,0" Grid.Column="1" Width="107" Foreground="White"/>
-                    <Label x:Name="label1_Copy7" Content="hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,96,0,0" Grid.Column="1" Width="27" Foreground="White"/>
+                    <TextBox x:Name="TxtServiceInterval" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="91.913,10,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1"/>
+                    <Label x:Name="label" Content="Scheduler Interval" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,0" Foreground="White" Grid.ColumnSpan="2"/>
+                    <ListBox x:Name="ListExtensions" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="147" Margin="91.913,75,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1"/>
+                    <Label x:Name="label_Copy" Content="Extensions List" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,75,0,0" Foreground="White" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="TxtAddExtension" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Margin="91.913,41,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1"/>
+                    <Label x:Name="label_Copy1" Content="Add Extension" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0" Foreground="White" Grid.ColumnSpan="2"/>
+                    <Button x:Name="BtnAddExtension" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="180.913,41,0,0" Height="23" Background="#FF3B3B3E" Foreground="White" Click="BtnAddExtension_Click" Grid.Column="1"/>
+                    <Button x:Name="BtnSetServiceInterval" Content="Set" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="180.913,10,0,0" Height="23" Foreground="White" Background="#FF3B3B3E" Grid.Column="1"/>
+                    <Label x:Name="label_Copy2" Content="hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="143.913,6,0,0" Width="32" Foreground="White" Grid.Column="1"/>
+                    <Label x:Name="label1" Content="Service Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,8,0,0" Grid.Column="2" Foreground="White"/>
+                    <Label x:Name="label1_Copy" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,34,0,0" Grid.Column="2" Width="51" Foreground="White"/>
+                    <Label x:Name="LabelServiceStatus" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,34,0,0" Grid.Column="2" Width="51" Foreground="White"/>
+                    <Label x:Name="LabelServiceCurrentInterval" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,65,0,0" Grid.Column="2" Width="27" Foreground="White"/>
+                    <Label x:Name="label1_Copy3" Content="Current Interval:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,65,0,0" Grid.Column="2" Width="95" Foreground="White"/>
+                    <Label x:Name="label1_Copy4" Content="hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,65,0,0" Grid.Column="2" Width="27" Foreground="White"/>
+                    <Label x:Name="LabelNextServiceRun" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,96,0,0" Grid.Column="2" Width="27" Foreground="White"/>
+                    <Label x:Name="label1_Copy6" Content="Service will run in:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,96,0,0" Grid.Column="2" Width="107" Foreground="White"/>
+                    <Label x:Name="label1_Copy7" Content="hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,96,0,0" Grid.Column="2" Width="27" Foreground="White"/>
                 </Grid>
             </TabItem>
             <TabItem Header="About" Foreground="White">
                 <Grid/>
             </TabItem>
         </TabControl>
-            <RichTextBox x:Name="TxtLog" HorizontalAlignment="Left" Height="141" VerticalAlignment="Top" Width="500" Margin="10,384,0,0" Grid.ColumnSpan="2"
+        <RichTextBox x:Name="TxtLog" HorizontalAlignment="Left" Height="141" VerticalAlignment="Top" Width="500" Margin="10,384,0,0" Grid.ColumnSpan="2"
                      Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" Background="#FF3B3B3E" Foreground="White" IsReadOnly="True">
-                <FlowDocument PageWidth="5000">
-                    <Paragraph>
-                        <Run Text=""/>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
-            <Button x:Name="BtnEnd" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="33" Grid.Column="1" Margin="159.4,0,0,0" Background="#FFDD4E41" Foreground="White" Click="BtnEnd_Click"/>
-            <Label x:Name="label2" Content="Prevensomware" HorizontalAlignment="Left" VerticalAlignment="Top" Height="62" Width="358" Foreground="#FF8B8B92" FontSize="43" FontFamily="Tahoma" FontWeight="Bold" Grid.ColumnSpan="2" Margin="8,0,0,0"/>
-            <Label x:Name="label3" Content="By Seekurity Labs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="242,41,0,0" Foreground="#FFFF1500" FontSize="15" Grid.ColumnSpan="2" Width="127"/>
+            <FlowDocument PageWidth="5000">
+                <Paragraph Margin="0">
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button x:Name="BtnClearLog" Content="Clear Log" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="73,533,0,0" Grid.Column="1" Background="#FF3B3B3E" Foreground="White" Click="BtnClearLog_Click"/>
+
+        <Button x:Name="BtnEnd" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="33" Grid.Column="1" Margin="159.4,0,0,0" Background="#FFDD4E41" Foreground="White" Click="BtnEnd_Click"/>
+        <Label x:Name="label2" Content="Prevensomware" HorizontalAlignment="Left" VerticalAlignment="Top" Height="62" Width="358" Foreground="#FF8B8B92" FontSize="43" FontFamily="Tahoma" FontWeight="Bold" Grid.ColumnSpan="2" Margin="8,0,0,0"/>
+        <Label x:Name="label3" Content="By Seekurity Labs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="242,41,0,0" Foreground="#FFFF1500" FontSize="15" Grid.ColumnSpan="2" Width="127"/>
     </Grid>
 </Window>

@@ -1,9 +1,0 @@
-c:\users\thewh\documents\visual studio 2015\Projects\RansomeOut\RansomeOut\bin\Debug\RansomeOut.exe.config
-c:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\RansomeOut\bin\Debug\RansomeOut.exe
-c:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\RansomeOut\bin\Debug\RansomeOut.pdb
-c:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\RansomeOut\obj\Debug\RansomeOut.csprojResolveAssemblyReference.cache
-c:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\RansomeOut\obj\Debug\RansomeOut.FrmMain.resources
-c:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\RansomeOut\obj\Debug\RansomeOut.Properties.Resources.resources
-c:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\RansomeOut\obj\Debug\RansomeOut.csproj.GenerateResource.Cache
-c:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\RansomeOut\obj\Debug\RansomeOut.exe
-c:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\RansomeOut\obj\Debug\RansomeOut.pdb
