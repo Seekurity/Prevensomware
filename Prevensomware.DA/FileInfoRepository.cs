@@ -6,9 +6,9 @@ namespace Prevensomware.DA
 {
     public class FileInfoRepository : RepositoryBase<DtoFileInfo>
     {
-        public DtoFileInfo LoadWithExtension(string replacedExtension)
+        public IEnumerable<DtoFileInfo> LoadWithExtension(string replacedExtension)
         {
-            return Session.QueryOver<DtoFileInfo>().Where(file => file.ReplacedExtension == replacedExtension).SingleOrDefault();
+            return Session.QueryOver<DtoFileInfo>().Where(file => file.ReplacedExtension == replacedExtension).List();
         }   
     }
 }

@@ -1,4 +1,5 @@
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Dto\bin\Debug\Prevensomware.Dto.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Dto\bin\Debug\Prevensomware.Dto.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Dto\obj\Debug\Prevensomware.Dto.csprojResolveAssemblyReference.cache
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Dto\obj\Debug\Prevensomware.Dto.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Dto\obj\Debug\Prevensomware.Dto.pdb
