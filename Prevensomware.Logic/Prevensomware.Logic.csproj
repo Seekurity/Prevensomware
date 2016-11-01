@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppStartupConfigurator.cs" />
     <Compile Include="IBo.cs" />
     <Compile Include="BoBase.cs" />
     <Compile Include="BoFileInfo.cs" />

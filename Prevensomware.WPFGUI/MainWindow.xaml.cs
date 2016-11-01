@@ -47,7 +47,6 @@ namespace Prevensomware.WPFGUI
         }
         public MainWindow()
         {
-            RegisterAppInWindowsRegistry();
             _fileManager = new FileManager();
             _windowsRegistryManager = new WindowsRegistryManager();
             var args = Environment.GetCommandLineArgs();
@@ -60,8 +59,34 @@ namespace Prevensomware.WPFGUI
             _windowsRegistryManager.LogDelegate = LogChanges;
             AddDefaultExtensionList();
             AutoUpdater.Start("http://seekurity.com/Appcast.xml");
+            var backgroundWorker = new BackgroundWorker();
+            SetAllButtonsEnabledState(false);
+            backgroundWorker.DoWork += (s, eventArgs) =>
+            {
+                var appConfigurator = new AppStartupConfigurator { LogDelegate = LogChanges };
+                if (appConfigurator.TestAppOnStartUp())
+                    SetAllButtonsEnabledState(true);
+                logList = new ObservableCollection<DtoLog>(_boLog.GetList());
+                Dispatcher.Invoke(new Action(() => dataGridLogs.ItemsSource = logList));
+            };
+            
+            backgroundWorker.RunWorkerAsync();
         }
 
+        private void SetAllButtonsEnabledState(bool isEnabled)
+        {
+            Dispatcher.Invoke(new Action(() =>
+            {
+                BtnStart.IsEnabled = isEnabled;
+                BtnAddExtension.IsEnabled = isEnabled;
+                BtnClearLog.IsEnabled = isEnabled;
+                BtnEnd.IsEnabled = isEnabled;
+                BtnRemoveExtension.IsEnabled = isEnabled;
+                BtnRevertAll.IsEnabled = isEnabled;
+                BtnRevertSelected.IsEnabled = isEnabled;
+                BtnSetServiceInterval.IsEnabled = isEnabled;
+            }));
+        }
         private void AddDefaultExtensionList()
         {
             ListExtensions.Items.Add(".txt");
@@ -262,17 +287,6 @@ namespace Prevensomware.WPFGUI
             foreach (var dtoLog in logList)
                 dtoLog.IsReverted = true;
             Dispatcher.Invoke(new Action(() => LogChanges("Changes are reverted.", LogType.Success)));
-        }
-
-        private void MainFrm_Loaded(object sender, RoutedEventArgs e)
-        {
-            var backgroundWorker = new BackgroundWorker();
-            backgroundWorker.DoWork += (s, eventArgs) => 
-            {
-                logList = new ObservableCollection<DtoLog>(_boLog.GetList());
-                Dispatcher.Invoke(new Action(() =>dataGridLogs.ItemsSource = logList));
-            };
-            backgroundWorker.RunWorkerAsync();
         }
 
         private void dataGridLogs_LostFocus(object sender, RoutedEventArgs e)

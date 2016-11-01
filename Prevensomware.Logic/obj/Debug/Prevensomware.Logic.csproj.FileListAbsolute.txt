@@ -5,7 +5,6 @@ C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.Lo
 C:\Users\thewh\Documents\Visual Studio 2015\Projects\RansomeOut\Prevensomware.Logic\obj\Debug\Prevensomware.Logic.pdb
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\System.Data.SQLite.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\Prevensomeware_db.xrtyzwm
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\hibernate.cfg.xml
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\x64\SQLite.Interop.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\x86\SQLite.Interop.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.Logic\bin\Debug\Prevensomware.Logic.dll

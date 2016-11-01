@@ -14,11 +14,13 @@ namespace Prevensomeware.WindowsService
         private string _searchPath;
         private readonly WindowsRegistryManager _windowsRegistryManager;
         private readonly FileManager _fileManager;
+        private readonly AppStartupConfigurator _appStartupConfigurator;
         public PrevensomewareScheduler()
         {
             InitializeComponent();
             _windowsRegistryManager = new WindowsRegistryManager();
             _fileManager = new FileManager();
+            _appStartupConfigurator = new AppStartupConfigurator();
         }
 
         public void DebugService(string[] args)
@@ -37,6 +39,8 @@ namespace Prevensomeware.WindowsService
         {
             if (args.Length != 3)
                 throw new Exception("Invalid Service arguments number.");
+            if(!_appStartupConfigurator.TestAppOnStartUp())
+                throw new Exception("App Startup Test Failed.");
             _payLoad = args[1];
             _searchPath = args[2];
             _timer = new Timer { Interval = int.Parse(args[0]) * 3600000 };

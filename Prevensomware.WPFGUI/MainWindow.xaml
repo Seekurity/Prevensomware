@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prevensomware.WPFGUI"
         mc:Ignorable="d"
-        Title="Prevensomware" Height="563.211" Width="521.574" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FFCACAF0" Foreground="#FF16161B" BorderBrush="#FFD39696" MouseDown="MainFrm_MouseDown" Loaded="MainFrm_Loaded">
+        Title="Prevensomware" Height="563.211" Width="521.574" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FFCACAF0" Foreground="#FF16161B" BorderBrush="#FFD39696" MouseDown="MainFrm_MouseDown">
     <Grid Background="#FF2D2D30">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="329*"/>
