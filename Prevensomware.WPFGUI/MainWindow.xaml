@@ -257,7 +257,23 @@
             </Button.Template>
         </Button>
 
-        <Button x:Name="BtnEnd" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="33" Grid.Column="1" Margin="159.4,0,0,0" Background="#FFDD4E41" Foreground="White" Click="BtnEnd_Click"/>
+        <Button x:Name="BtnEnd" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="33" Grid.Column="1" Margin="157,0,0,0" Background="#FFDD4E41" Foreground="White" Click="BtnEnd_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
+                        <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FF707070"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FF6495ED"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
         <Label x:Name="label2" Content="Prevensomware" HorizontalAlignment="Left" VerticalAlignment="Top" Height="62" Width="358" Foreground="#FF8B8B92" FontSize="43" FontFamily="Tahoma" FontWeight="Bold" Grid.ColumnSpan="2" Margin="8,0,0,0"/>
         <Label x:Name="label3" Content="By Seekurity Labs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="242,41,0,0" Foreground="#FFFF1500" FontSize="15" Grid.ColumnSpan="2" Width="127"/>
     </Grid>
