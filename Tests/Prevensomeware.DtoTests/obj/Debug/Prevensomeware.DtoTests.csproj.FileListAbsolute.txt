@@ -3,3 +3,8 @@ C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.DtoTests\bin\Debug\
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.DtoTests\obj\Debug\Prevensomeware.DtoTests.csprojResolveAssemblyReference.cache
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.DtoTests\obj\Debug\Prevensomeware.DtoTests.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomeware.DtoTests\obj\Debug\Prevensomeware.DtoTests.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomeware.DtoTests\bin\Debug\Prevensomeware.DtoTests.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomeware.DtoTests\bin\Debug\Prevensomeware.DtoTests.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomeware.DtoTests\obj\Debug\Prevensomeware.DtoTests.csprojResolveAssemblyReference.cache
+C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomeware.DtoTests\obj\Debug\Prevensomeware.DtoTests.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomeware.DtoTests\obj\Debug\Prevensomeware.DtoTests.pdb

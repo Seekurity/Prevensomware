@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="Prevensomware.Dto"
+                  namespace="Prevensomware.Dto">
+
+  <class name="DtoServiceInfo" table="ServiceInfo">
+    <id name="Oid" type="int">
+      <generator class="native" />
+    </id>
+    <property name="CreateDateTime" type="DateTime" />
+    <property name="Name" />
+    <property name="Interval" />
+    <property name="NextServiceRunDateTime" type="DateTime" />
+  </class>
+</hibernate-mapping>

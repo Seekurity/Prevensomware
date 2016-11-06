@@ -10,8 +10,6 @@
     <property name="CreateDateTime" type="DateTime" />
     <property name="OriginalExtension" />
     <property name="ReplacedExtension" />
-    <property name="OriginalPath" />
-    <property name="ReplacedPath" />
     <many-to-one
         name="Log"
         class="DtoLog"
@@ -19,7 +17,15 @@
       <column name="IdLog"
 				 index="IX_LOG_LOG" />
     </many-to-one>
+    <many-to-one
+            name="UserSettings"
+            class="DtoUserSettings"
+            cascade="save-update">
+      <column name="IdUserSettings"
+				 index="IX_FILEINFO_USERSETTINGS" />
+    </many-to-one>
 
+    
   </class>
 
 </hibernate-mapping>

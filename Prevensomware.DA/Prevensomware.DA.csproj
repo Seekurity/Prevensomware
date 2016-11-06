@@ -87,9 +87,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Prevensomeware_db.xrtyzwm">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Prevensomeware_db.xrtyzwm" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Prevensomware.Dto\Prevensomware.Dto.csproj">

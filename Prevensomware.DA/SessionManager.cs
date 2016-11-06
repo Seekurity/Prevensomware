@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Security.AccessControl;
-using System.Security.Principal;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Connection;
@@ -67,6 +63,8 @@ namespace Prevensomware.DA
             cfg.AddClass(typeof(DtoLog));
             cfg.AddClass(typeof(DtoRegistryKey));
             cfg.AddClass(typeof(DtoRegistryValue));
+            cfg.AddClass(typeof(DtoServiceInfo));
+            cfg.AddClass(typeof(DtoUserSettings));
 
             var sessions = cfg.BuildSessionFactory();
             _session = sessions.OpenSession();

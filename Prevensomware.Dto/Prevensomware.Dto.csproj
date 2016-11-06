@@ -61,6 +61,8 @@
   <ItemGroup>
     <Compile Include="DtoBase.cs" />
     <Compile Include="DtoFileInfo.cs" />
+    <Compile Include="DtoServiceInfo.cs" />
+    <Compile Include="DtoUserSettings.cs" />
     <Compile Include="DtoLog.cs" />
     <Compile Include="DtoRegistryValue.cs" />
     <Compile Include="DtoRegistryKey.cs" />
@@ -80,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DtoRegistryKey.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DtoUserSettings.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DtoServiceInfo.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

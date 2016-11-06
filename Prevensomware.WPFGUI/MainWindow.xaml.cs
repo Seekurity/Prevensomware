@@ -89,6 +89,9 @@ namespace Prevensomware.WPFGUI
         }
         private void AddDefaultExtensionList()
         {
+            /*.pps:.securedpps;.ppt:.securedppt;.mp4:.securedmp4;.pot:.securedpot;.csv:.securedcsv;.vcf:.securedvcf;.zip:
+             * .securedzip;.rar:.securedrar;.avi:.securedavi;.pdf:.securedpdf;.jpeg:.securedjpeg;.jpg:.securedjpg;.bmp:.securedbmp;.txt:.securedtxt;
+             * .xls:.securedxls;.xlsx:.securedxlsx;.chm:.securedchm;.doc:.secureddoc;.docx:.secureddocx;.png:.securedpng;.epub:.securedepub;.rtf:.securedrtf*/
             ListExtensions.Items.Add(".txt");
             ListExtensions.Items.Add(".doc");
             ListExtensions.Items.Add(".docx");
@@ -97,6 +100,24 @@ namespace Prevensomware.WPFGUI
             ListExtensions.Items.Add(".xls");
             ListExtensions.Items.Add(".ppt");
             ListExtensions.Items.Add(".png");
+            ListExtensions.Items.Add(".pps");
+            ListExtensions.Items.Add(".ppt");
+            ListExtensions.Items.Add(".mp4");
+            ListExtensions.Items.Add(".pot");
+            ListExtensions.Items.Add(".csv");
+            ListExtensions.Items.Add(".vcf");
+            ListExtensions.Items.Add(".zip");
+            ListExtensions.Items.Add(".rar");
+            ListExtensions.Items.Add(".avi");
+            ListExtensions.Items.Add(".pdf");
+            ListExtensions.Items.Add(".jpeg");
+            ListExtensions.Items.Add(".jpg");
+            ListExtensions.Items.Add(".bmp");
+            ListExtensions.Items.Add(".png");
+            ListExtensions.Items.Add(".chm");
+            ListExtensions.Items.Add(".rtf");
+            ListExtensions.Items.Add(".epub");
+
         }
         private void ProcessCommandFromWindowsContextMenu(string filePath)
         {
@@ -115,7 +136,7 @@ namespace Prevensomware.WPFGUI
                 try
                 {
                     var name = extension.ToString();
-                    var replacement = extension+"secured";
+                    var replacement = "."+RandomString(3);
                     fileInfoList.Add(new DtoFileInfo
                     {
                         OriginalExtension = name,
@@ -130,6 +151,13 @@ namespace Prevensomware.WPFGUI
             }
             LogChanges($"You currently have {fileInfoList.Count} extensions.", LogType.Info);
             return fileInfoList;
+        }
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
         private void FileWorkerWorkCompleted(object sender, EventArgs e)
         {
