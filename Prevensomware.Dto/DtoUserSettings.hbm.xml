@@ -10,15 +10,18 @@
     <property name="CreateDateTime" type="DateTime" />
     <property name="SearchPath" />
     
-    <bag name="SelectedFileExtensionList" inverse="true" cascade="save-update">
+    <bag name="SelectedFileExtensionList" inverse="true" cascade="save-update" order-by="CreateDateTime desc">
       <key column="IdUserSettings" />
       <one-to-many class="DtoFileInfo"/>
     </bag>
-
-    <one-to-one name="ServiceInfo"
-                      constrained="true"
-                      foreign-key="none"
-                      class="DtoServiceInfo" />
+    
+    <many-to-one
+     name="ServiceInfo"
+     class="DtoServiceInfo"
+     cascade="save-update" >
+      <column name="IdServiceInfo"
+				 index="IX_USERSETTINGS_SERVICEINFO" />
+    </many-to-one>
   </class>
 
 </hibernate-mapping>

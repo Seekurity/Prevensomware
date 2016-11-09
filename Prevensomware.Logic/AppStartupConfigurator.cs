@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Win32;
 using Prevensomware.DA;
@@ -9,7 +10,48 @@ namespace Prevensomware.Logic
     public class AppStartupConfigurator
     {
         public Action<string,LogType> LogDelegate { get; set; }
+        private static readonly Random Random = new Random();
 
+        public DtoUserSettings GenerateInitialUserSettings()
+        {
+            var dtoUserSettings = new DtoUserSettings
+            {
+                ServiceInfo = GenerateInitialServiceInfo(),
+                CreateDateTime = DateTime.Now
+            };
+            dtoUserSettings.SelectedFileExtensionList = GenerateInitialExtensionFileList(dtoUserSettings);
+            new BoUserSettings().Save(dtoUserSettings);
+
+            return dtoUserSettings;
+        }
+
+        private DtoServiceInfo GenerateInitialServiceInfo()
+        {
+            var serviceInfo = new DtoServiceInfo
+            {
+                CreateDateTime = DateTime.Now,
+                Interval = 5,
+                Name = "Prevensomware",
+                NextServiceRunDateTime = DateTime.Now.AddHours(5)
+            };
+            new BoServiceInfo().Save(serviceInfo);
+            return serviceInfo;
+        }
+        private static string RandomString(int length)
+        {
+            const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[Random.Next(s.Length)]).ToArray());
+        }
+        private IList<DtoFileInfo> GenerateInitialExtensionFileList(DtoUserSettings dtoUserSettings)
+        {
+            var initialExtensionArray = new[] {"txt", "doc", "docx", "bat", "xlsx", "xls", "ppt", "png", "pps", "ppt", "mp4",
+                "pot", "csv", "vcf", "zip", "rar", "avi", "pdf", "jpeg", "jpg", "bmp", "png", "chm","rtf","epub" };
+            return initialExtensionArray.Select(extension => new DtoFileInfo
+            {
+                CreateDateTime = DateTime.Now, UserSettings = dtoUserSettings, OriginalExtension = "." + extension, ReplacedExtension = "." + RandomString(4)
+            }).ToList();
+        }
         public bool TestAppOnStartUp()
         {
             LogDelegate?.Invoke("Starting App Startup Test.", LogType.Info);
@@ -35,7 +77,6 @@ namespace Prevensomware.Logic
                 LogDelegate?.Invoke("Startup Test: Local Files are accessible.", LogType.Success);
                 checkSucceeded = true;
             }
-            LogDelegate?.Invoke("End", LogType.Info);
             return checkSucceeded;
         }
 

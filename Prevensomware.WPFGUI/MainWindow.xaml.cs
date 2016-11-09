@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -14,6 +15,7 @@ using Microsoft.Win32;
 using Prevensomware.Dto;
 using Prevensomware.Logic;
 using Application = System.Windows.Application;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using MessageBox = System.Windows.MessageBox;
 
 namespace Prevensomware.WPFGUI
@@ -26,13 +28,16 @@ namespace Prevensomware.WPFGUI
         private DtoLog _dtoLog;
         private readonly BoLog _boLog = new BoLog();
         public ObservableCollection<DtoLog> logList;
-        private IEnumerable<DtoFileInfo> _fileInfoList;
+        public ObservableCollection<DtoFileInfo> selectedUserextensionList;
         private string _searchPath;
         private string _chosenSearchPath;
         private readonly FileManager _fileManager;
         private readonly WindowsRegistryManager _windowsRegistryManager;
         private FolderBrowserDialog _folderBrowserDialog = new FolderBrowserDialog();
         private string _payLoad = string.Empty;
+        private readonly AppStartupConfigurator _appConfigurator = new AppStartupConfigurator();
+        public DtoUserSettings userSettings;
+        private readonly BoFileInfo _boFileInfo;
         public void RegisterAppInWindowsRegistry()
         {
             if (Registry.GetValue(@"HKEY_CLASSES_ROOT\*\shell\Revert File\command", "", null) != null) return;
@@ -49,6 +54,7 @@ namespace Prevensomware.WPFGUI
         {
             _fileManager = new FileManager();
             _windowsRegistryManager = new WindowsRegistryManager();
+            _boFileInfo = new BoFileInfo();
             var args = Environment.GetCommandLineArgs();
             if (args.Length > 1)
             {
@@ -57,22 +63,43 @@ namespace Prevensomware.WPFGUI
             InitializeComponent();
             _fileManager.LogDelegate = LogChanges;
             _windowsRegistryManager.LogDelegate = LogChanges;
-            AddDefaultExtensionList();
+            _appConfigurator.LogDelegate = LogChanges;
             AutoUpdater.Start("http://seekurity.com/Appcast.xml");
             var backgroundWorker = new BackgroundWorker();
             SetAllButtonsEnabledState(false);
             backgroundWorker.DoWork += (s, eventArgs) =>
             {
-                var appConfigurator = new AppStartupConfigurator { LogDelegate = LogChanges };
-                if (appConfigurator.TestAppOnStartUp())
-                    SetAllButtonsEnabledState(true);
+                SetAllButtonsEnabledState(_appConfigurator.TestAppOnStartUp());
+                LoadUserSettingsInfo();
+
                 logList = new ObservableCollection<DtoLog>(_boLog.GetList());
                 Dispatcher.Invoke(new Action(() => dataGridLogs.ItemsSource = logList));
             };
-            
+
             backgroundWorker.RunWorkerAsync();
         }
 
+        private void LoadUserSettingsInfo()
+        {
+            LogChanges("Loading user settings.", LogType.Info);
+            try
+            {
+                var currentUserSettings = new BoUserSettings().LoadCurrentUserSettings();
+                if (currentUserSettings == null)
+                {
+                    LogChanges("No user settings were found. Generating default user settings.", LogType.Info);
+                    currentUserSettings = _appConfigurator.GenerateInitialUserSettings();
+                }
+                userSettings = currentUserSettings;
+                selectedUserextensionList = new ObservableCollection<DtoFileInfo>(userSettings.SelectedFileExtensionList);
+                Dispatcher.Invoke(new Action(() => ListExtensions.ItemsSource = selectedUserextensionList));
+            }
+            catch
+            {
+                    LogChanges("Failed to load user settings.", LogType.Error);
+            }
+            LogChanges("End", LogType.Info);
+        }
         private void SetAllButtonsEnabledState(bool isEnabled)
         {
             Dispatcher.Invoke(new Action(() =>
@@ -87,38 +114,6 @@ namespace Prevensomware.WPFGUI
                 BtnSetServiceInterval.IsEnabled = isEnabled;
             }));
         }
-        private void AddDefaultExtensionList()
-        {
-            /*.pps:.securedpps;.ppt:.securedppt;.mp4:.securedmp4;.pot:.securedpot;.csv:.securedcsv;.vcf:.securedvcf;.zip:
-             * .securedzip;.rar:.securedrar;.avi:.securedavi;.pdf:.securedpdf;.jpeg:.securedjpeg;.jpg:.securedjpg;.bmp:.securedbmp;.txt:.securedtxt;
-             * .xls:.securedxls;.xlsx:.securedxlsx;.chm:.securedchm;.doc:.secureddoc;.docx:.secureddocx;.png:.securedpng;.epub:.securedepub;.rtf:.securedrtf*/
-            ListExtensions.Items.Add(".txt");
-            ListExtensions.Items.Add(".doc");
-            ListExtensions.Items.Add(".docx");
-            ListExtensions.Items.Add(".bat");
-            ListExtensions.Items.Add(".xlsx");
-            ListExtensions.Items.Add(".xls");
-            ListExtensions.Items.Add(".ppt");
-            ListExtensions.Items.Add(".png");
-            ListExtensions.Items.Add(".pps");
-            ListExtensions.Items.Add(".ppt");
-            ListExtensions.Items.Add(".mp4");
-            ListExtensions.Items.Add(".pot");
-            ListExtensions.Items.Add(".csv");
-            ListExtensions.Items.Add(".vcf");
-            ListExtensions.Items.Add(".zip");
-            ListExtensions.Items.Add(".rar");
-            ListExtensions.Items.Add(".avi");
-            ListExtensions.Items.Add(".pdf");
-            ListExtensions.Items.Add(".jpeg");
-            ListExtensions.Items.Add(".jpg");
-            ListExtensions.Items.Add(".bmp");
-            ListExtensions.Items.Add(".png");
-            ListExtensions.Items.Add(".chm");
-            ListExtensions.Items.Add(".rtf");
-            ListExtensions.Items.Add(".epub");
-
-        }
         private void ProcessCommandFromWindowsContextMenu(string filePath)
         {
             var isReverted = new BoFileInfo().RevertForPath(filePath);
@@ -126,39 +121,24 @@ namespace Prevensomware.WPFGUI
             Environment.Exit(Environment.ExitCode);
         }
 
-        private IEnumerable<DtoFileInfo> GeneratFileInfoList()
+        private void GeneratPayloadString()
         {
-            var fileInfoList = new List<DtoFileInfo>();
             _payLoad = string.Empty;
-            foreach (var extension in ListExtensions.Items)
+            foreach (var fileInfo in ListExtensions.Items)
             {
                 if(!string.IsNullOrEmpty(_payLoad)) _payLoad+= ";";
                 try
                 {
-                    var name = extension.ToString();
-                    var replacement = "."+RandomString(3);
-                    fileInfoList.Add(new DtoFileInfo
-                    {
-                        OriginalExtension = name,
-                        ReplacedExtension = replacement
-                    });
-                    _payLoad += $"{name}:{replacement}";
+                    _payLoad += $"{((DtoFileInfo)fileInfo).OriginalExtension}:{((DtoFileInfo)fileInfo).ReplacedExtension}";
                 }
                 catch
                 {
                     MessageBox.Show("Payload Format Error");
                 }
             }
-            LogChanges($"You currently have {fileInfoList.Count} extensions.", LogType.Info);
-            return fileInfoList;
+            LogChanges($"You currently have {userSettings.SelectedFileExtensionList.Count} extensions.", LogType.Info);
         }
-        private static Random random = new Random();
-        public static string RandomString(int length)
-        {
-            const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
+       
         private void FileWorkerWorkCompleted(object sender, EventArgs e)
         {
             TxtLog.AppendText(DateTime.Now + "\tEnd.\r\n");
@@ -169,7 +149,7 @@ namespace Prevensomware.WPFGUI
         private void WindowsRegistryManagerWorkCompleted(object sender, EventArgs e)
         {
             var fileWorker = new BackgroundWorker();
-            fileWorker.DoWork += (s, eventArgs) => _fileManager.RenameAllFilesWithNewExtension(_fileInfoList, _searchPath, ref _dtoLog);
+            fileWorker.DoWork += (s, eventArgs) => _fileManager.RenameAllFilesWithNewExtension(userSettings.SelectedFileExtensionList, _searchPath, ref _dtoLog);
             fileWorker.RunWorkerCompleted += FileWorkerWorkCompleted;
             fileWorker.RunWorkerAsync();
         }
@@ -209,14 +189,13 @@ namespace Prevensomware.WPFGUI
             }
             BtnStart.IsEnabled = false;
             TxtLog.AppendText(DateTime.Now + "\tStarted.\r\n");
-            var fileInfoList = GeneratFileInfoList();
+            GeneratPayloadString();
             var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = _payLoad, SearchPath = searchPath };
             new BoLog().Save(dtoLog);
             _dtoLog = dtoLog;
             _searchPath = searchPath;
-            _fileInfoList = fileInfoList;
             var registryWorker = new BackgroundWorker();
-            registryWorker.DoWork += (s, eventArgs) => _windowsRegistryManager.GenerateNewRegistryKeys(fileInfoList, ref dtoLog);
+            registryWorker.DoWork += (s, eventArgs) => _windowsRegistryManager.GenerateNewRegistryKeys(userSettings.SelectedFileExtensionList, ref dtoLog);
             registryWorker.RunWorkerCompleted += WindowsRegistryManagerWorkCompleted;
             registryWorker.RunWorkerAsync();
         }
@@ -264,12 +243,27 @@ namespace Prevensomware.WPFGUI
 
         private void BtnAddExtension_Click(object sender, RoutedEventArgs e)
         {
-            if (ListExtensions.Items.Contains(TxtExtension.Text) || string.IsNullOrEmpty(TxtExtension.Text)) return;
-            ListExtensions.Items.Insert(0, TxtExtension.Text);
-            GeneratFileInfoList();
-            TxtExtension.Clear();
+            AddNewExtension();
         }
 
+        private void AddNewExtension()
+        {
+            if (userSettings.SelectedFileExtensionList.Any(x => string.Equals(x.OriginalExtension, TxtExtension.Text, StringComparison.CurrentCultureIgnoreCase)) || string.IsNullOrEmpty(TxtExtension.Text)) return;
+            if (!TxtExtension.Text.StartsWith(".") || TxtExtension.Text.Count(c => c == '.') > 1) return;
+            var insertedFile = _boFileInfo.InsertNewFileInfo(TxtExtension.Text, ref userSettings);
+            selectedUserextensionList.Insert(0, insertedFile);
+            GeneratPayloadString();
+            TxtExtension.Clear();
+        }
+        private void BtnRemoveExtension_Click(object sender, RoutedEventArgs e)
+        {
+            if (!userSettings.SelectedFileExtensionList.Any(x => string.Equals(x.OriginalExtension, TxtExtension.Text, StringComparison.CurrentCultureIgnoreCase)) || string.IsNullOrEmpty(TxtExtension.Text)) return;
+            var extensionToRemove = userSettings.SelectedFileExtensionList.Single(x=>string.Equals(x.OriginalExtension,TxtExtension.Text,StringComparison.InvariantCultureIgnoreCase));
+            _boFileInfo.RemoveFileInfo(extensionToRemove, ref userSettings);
+            selectedUserextensionList.Remove(extensionToRemove);
+            GeneratPayloadString();
+            TxtExtension.Clear();
+        }
         private void BtnClearLog_Click(object sender, RoutedEventArgs e)
         {
             TxtLog.SelectAll();
@@ -322,19 +316,19 @@ namespace Prevensomware.WPFGUI
             dataGridLogs.RowBackground = new SolidColorBrush(Color.FromArgb(255,34,34,36));
         }
 
-        private void BtnRemoveExtension_Click(object sender, RoutedEventArgs e)
-        {
-            if (!ListExtensions.Items.Contains(TxtExtension.Text)) return;
-            ListExtensions.Items.Remove(TxtExtension.Text);
-            GeneratFileInfoList();
-            TxtExtension.Clear();
-        }
-
         private void ListExtensions_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems != null && e.AddedItems.Count == 1)
             {
-                TxtExtension.Text = e.AddedItems[0].ToString();
+                TxtExtension.Text = ((DtoFileInfo)e.AddedItems[0]).OriginalExtension;
+            }
+        }
+
+        private void TxtExtension_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                AddNewExtension();
             }
         }
     }

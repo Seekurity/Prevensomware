@@ -8,8 +8,3 @@ C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.ServiceTests\bin\Deb
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.ServiceTests\obj\Debug\Prevensomware.ServiceTests.csprojResolveAssemblyReference.cache
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.ServiceTests\obj\Debug\Prevensomware.ServiceTests.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.ServiceTests\obj\Debug\Prevensomware.ServiceTests.pdb
-C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomware.ServiceTests\bin\Debug\Prevensomware.ServiceTests.dll
-C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomware.ServiceTests\bin\Debug\Prevensomware.ServiceTests.pdb
-C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomware.ServiceTests\obj\Debug\Prevensomware.ServiceTests.csprojResolveAssemblyReference.cache
-C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomware.ServiceTests\obj\Debug\Prevensomware.ServiceTests.dll
-C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomware.ServiceTests\obj\Debug\Prevensomware.ServiceTests.pdb

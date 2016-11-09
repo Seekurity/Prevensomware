@@ -7,6 +7,8 @@ namespace Prevensomware.Dto
         public virtual string Name { get; set; }
         public virtual int Interval { get; set; }
         public virtual DateTime NextServiceRunDateTime { get; set; }
+        public virtual DtoUserSettings UserSettings { get; set; }
+
     }
 }
 

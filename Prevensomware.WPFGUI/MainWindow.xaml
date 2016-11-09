@@ -41,11 +41,12 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="87*"/>
-                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="18*"/>
                         <ColumnDefinition Width="115*"/>
-                        <ColumnDefinition Width="257*"/>
+                        <ColumnDefinition Width="256*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="96" Margin="150.8,20,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnStart_Click">
+                    <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="96" Margin="150.4,20,0,0" Grid.Column="4" Background="#FF3B3B3E" Foreground="White" Click="BtnStart_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
@@ -62,7 +63,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button x:Name="BtnRevertAll" Content="Revert All" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="96" Margin="150.8,215,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnRevertAll_Click">
+                    <Button x:Name="BtnRevertAll" Content="Revert All" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="96" Margin="150.4,215,0,0" Grid.Column="4" Background="#FF3B3B3E" Foreground="White" Click="BtnRevertAll_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
@@ -78,15 +79,15 @@
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Button.Template>
-                        </Button>
-                    <GroupBox x:Name="groupBox" Header="Choose Path" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,20,0,0" Width="244" Height="44" Grid.ColumnSpan="4" Foreground="White">
+                    </Button>
+                    <GroupBox x:Name="groupBox" Header="Choose Path" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,20,0,0" Width="244" Height="44" Grid.ColumnSpan="5" Foreground="White">
                         <StackPanel Orientation="Horizontal">
                             <RadioButton x:Name="RadioBtnHdd" Content="Hard Drive"  Foreground="White" Click="RadioBtnHdd_Click"/>
                             <RadioButton x:Name="RadioBtnPath" Content="Choose Path" Foreground="White" Click="RadioBtnPath_Click" Margin="60,0,0,0" />
                         </StackPanel>
                     </GroupBox>
-                    <Label x:Name="LblPath" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,64,0,0" Width="244" Grid.ColumnSpan="4" Foreground="White"/>
-                    <DataGrid x:Name="dataGridLogs" IsReadOnly="True" HorizontalAlignment="Left" AutoGenerateColumns="False" VerticalAlignment="Top" Grid.ColumnSpan="4" Height="141" Width="474" Margin="10,69,0,0" Background="#FF3B3B3E" ItemsSource="{Binding logList, Mode=TwoWay}" LostFocus="dataGridLogs_LostFocus">
+                    <Label x:Name="LblPath" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,64,0,0" Width="244" Grid.ColumnSpan="5" Foreground="White"/>
+                    <DataGrid x:Name="dataGridLogs" IsReadOnly="True" HorizontalAlignment="Left" AutoGenerateColumns="False" VerticalAlignment="Top" Grid.ColumnSpan="5" Height="141" Width="474" Margin="10,69,0,0" Background="#FF3B3B3E" ItemsSource="{Binding logList, Mode=TwoWay}" LostFocus="dataGridLogs_LostFocus">
 
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -132,7 +133,7 @@
                             </Style>
                         </DataGrid.CellStyle>
                     </DataGrid>
-                    <Button x:Name="BtnRevertSelected" Content="Revert Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="96" Margin="49.4,215,0,0" Grid.Column="3" Background="#FF3B3B3E" Foreground="White" Click="BtnRevertSelected_Click">
+                    <Button x:Name="BtnRevertSelected" Content="Revert Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="96" Margin="49.4,215,0,0" Grid.Column="4" Background="#FF3B3B3E" Foreground="White" Click="BtnRevertSelected_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
@@ -160,9 +161,15 @@
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="TxtServiceInterval" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="91.913,10,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1"/>
                     <Label x:Name="label" Content="Scheduler Interval" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,0" Foreground="White" Grid.ColumnSpan="2"/>
-                    <ListBox x:Name="ListExtensions" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="173" Margin="92,75,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1" SelectionChanged="ListExtensions_SelectionChanged"/>
+                    <ListBox x:Name="ListExtensions" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="173" Margin="92,75,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1" SelectionChanged="ListExtensions_SelectionChanged" ItemsSource="{Binding}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding OriginalExtension}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                     <Label x:Name="label_Copy" Content="Extensions List" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,75,0,0" Foreground="White" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="TxtExtension" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="92,41,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1"/>
+                    <TextBox x:Name="TxtExtension" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="92,41,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1" KeyDown="TxtExtension_OnKeyDown"/>
                     <Label x:Name="label_Copy1" Content="Add Extension" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0" Foreground="White" Grid.ColumnSpan="2"/>
                     <Button x:Name="BtnAddExtension" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="144,41,0,0" Height="23" Background="#FF3B3B3E" Foreground="White" Click="BtnAddExtension_Click" Grid.Column="1">
                         <Button.Template>

@@ -8,8 +8,3 @@ C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.LogicTests\bin\Debug
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.LogicTests\obj\Debug\Prevensomware.LogicTests.csprojResolveAssemblyReference.cache
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.LogicTests\obj\Debug\Prevensomware.LogicTests.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.LogicTests\obj\Debug\Prevensomware.LogicTests.pdb
-C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomware.LogicTests\bin\Debug\Prevensomware.LogicTests.dll
-C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomware.LogicTests\bin\Debug\Prevensomware.LogicTests.pdb
-C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomware.LogicTests\obj\Debug\Prevensomware.LogicTests.csprojResolveAssemblyReference.cache
-C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomware.LogicTests\obj\Debug\Prevensomware.LogicTests.dll
-C:\Users\thewh\Documents\GitHub\Prevensomware\Tests\Prevensomware.LogicTests\obj\Debug\Prevensomware.LogicTests.pdb

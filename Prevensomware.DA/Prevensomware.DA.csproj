@@ -72,6 +72,8 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="FileInfoRepository.cs" />
     <Compile Include="LogRepository.cs" />
+    <Compile Include="UserSettingsRepository.cs" />
+    <Compile Include="ServiceInfoRepository.cs" />
     <Compile Include="RegistryValueRepository.cs" />
     <Compile Include="RegistryKeyRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

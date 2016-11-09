@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStartupConfigurator.cs" />
+    <Compile Include="BoUserSettings.cs" />
+    <Compile Include="BoServiceInfo.cs" />
     <Compile Include="IBo.cs" />
     <Compile Include="BoBase.cs" />
     <Compile Include="BoFileInfo.cs" />
