@@ -38,6 +38,9 @@ namespace Prevensomware.WPFGUI
         private readonly AppStartupConfigurator _appConfigurator = new AppStartupConfigurator();
         public DtoUserSettings userSettings;
         private readonly BoFileInfo _boFileInfo;
+        private readonly BoUserSettings _boUserSettings;
+        private readonly WindowsServiceManager _windowsServiceManager;
+        private Timer _timerTxtServiceUpdater;
         public void RegisterAppInWindowsRegistry()
         {
             if (Registry.GetValue(@"HKEY_CLASSES_ROOT\*\shell\Revert File\command", "", null) != null) return;
@@ -55,6 +58,8 @@ namespace Prevensomware.WPFGUI
             _fileManager = new FileManager();
             _windowsRegistryManager = new WindowsRegistryManager();
             _boFileInfo = new BoFileInfo();
+            _windowsServiceManager = new WindowsServiceManager();
+            _boUserSettings = new BoUserSettings();
             var args = Environment.GetCommandLineArgs();
             if (args.Length > 1)
             {
@@ -64,9 +69,13 @@ namespace Prevensomware.WPFGUI
             _fileManager.LogDelegate = LogChanges;
             _windowsRegistryManager.LogDelegate = LogChanges;
             _appConfigurator.LogDelegate = LogChanges;
+            _windowsServiceManager.LogDelegate = LogChanges;
             AutoUpdater.Start("http://seekurity.com/Appcast.xml");
             var backgroundWorker = new BackgroundWorker();
             SetAllButtonsEnabledState(false);
+            _timerTxtServiceUpdater = new Timer {Interval = 60000 };
+            _timerTxtServiceUpdater.Tick += _timerTxtServiceUpdater_Tick;
+            _timerTxtServiceUpdater.Enabled = true;
             backgroundWorker.DoWork += (s, eventArgs) =>
             {
                 SetAllButtonsEnabledState(_appConfigurator.TestAppOnStartUp());
@@ -77,6 +86,22 @@ namespace Prevensomware.WPFGUI
             };
 
             backgroundWorker.RunWorkerAsync();
+        }
+
+        private void _timerTxtServiceUpdater_Tick(object sender, EventArgs e)
+        {
+            var timeDiffInMinutes = userSettings.ServiceInfo.NextServiceRunDateTime.Subtract(DateTime.Now).TotalMinutes;
+            if (timeDiffInMinutes < 0)
+            {
+                userSettings = _boUserSettings.LoadCurrentUserSettings();
+                timeDiffInMinutes = userSettings.ServiceInfo.NextServiceRunDateTime.Subtract(DateTime.Now).TotalMinutes;
+            }
+            Dispatcher.Invoke(new Action(() =>
+            {
+                if (LabelServiceStatus.Content.ToString() == ServiceState.Stopped.ToString())
+                    LabelServiceCurrentInterval.Content = 0;
+                LabelNextServiceRun.Content = timeDiffInMinutes < 0 ? 0 : (int) timeDiffInMinutes;
+            }));
         }
 
         private void LoadUserSettingsInfo()
@@ -92,7 +117,11 @@ namespace Prevensomware.WPFGUI
                 }
                 userSettings = currentUserSettings;
                 selectedUserextensionList = new ObservableCollection<DtoFileInfo>(userSettings.SelectedFileExtensionList);
-                Dispatcher.Invoke(new Action(() => ListExtensions.ItemsSource = selectedUserextensionList));
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    ListExtensions.ItemsSource = selectedUserextensionList;
+                    SetServiceLabels();
+                }));
             }
             catch
             {
@@ -145,6 +174,7 @@ namespace Prevensomware.WPFGUI
             TxtLog.ScrollToEnd();
             BtnStart.IsEnabled = true;
             logList.Add(_dtoLog);
+            Dispatcher.Invoke(new Action(SetServiceLabels));
         }
         private void WindowsRegistryManagerWorkCompleted(object sender, EventArgs e)
         {
@@ -194,12 +224,30 @@ namespace Prevensomware.WPFGUI
             new BoLog().Save(dtoLog);
             _dtoLog = dtoLog;
             _searchPath = searchPath;
-            var registryWorker = new BackgroundWorker();
-            registryWorker.DoWork += (s, eventArgs) => _windowsRegistryManager.GenerateNewRegistryKeys(userSettings.SelectedFileExtensionList, ref dtoLog);
-            registryWorker.RunWorkerCompleted += WindowsRegistryManagerWorkCompleted;
-            registryWorker.RunWorkerAsync();
+            var backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += (s, eventArgs) =>
+            {
+                userSettings.SearchPath = searchPath;
+                _boUserSettings.Save(userSettings);
+                _windowsServiceManager.StartService(userSettings.ServiceInfo);
+                _windowsRegistryManager.GenerateNewRegistryKeys(userSettings.SelectedFileExtensionList, ref dtoLog);
+            };
+            backgroundWorker.RunWorkerCompleted += WindowsRegistryManagerWorkCompleted;
+            backgroundWorker.RunWorkerAsync();
         }
 
+        private void SetServiceLabels()
+        {
+            var serviceState = _windowsServiceManager.GetServiceState(userSettings.ServiceInfo);
+            LabelServiceStatus.Content = serviceState.ToString();
+            LabelServiceStatus.Foreground = serviceState == ServiceState.Running ?
+            new SolidColorBrush(Color.FromRgb(0, 153, 0)) : new SolidColorBrush(Color.FromRgb(204, 0, 0));
+            LabelServiceCurrentInterval.Content = userSettings.ServiceInfo.Interval;
+            var timeDiffInMinutes =
+                userSettings.ServiceInfo.NextServiceRunDateTime.Subtract(DateTime.Now).TotalMinutes;
+            LabelNextServiceRun.Content = timeDiffInMinutes < 0 ? 0 : (int)timeDiffInMinutes;
+            _timerTxtServiceUpdater.Start();
+        }
         private void MainFrm_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -275,22 +323,28 @@ namespace Prevensomware.WPFGUI
 
         private void BtnRevertSelected_Click(object sender, RoutedEventArgs e)
         {
-            var revertedChange = false;
-            foreach (DtoLog dtoLog in dataGridLogs.SelectedItems)
+            var backgroundWorker = new BackgroundWorker();
+            var gridSelectedItems = dataGridLogs.SelectedItems;
+            backgroundWorker.DoWork += (s, eventArgs) =>
             {
-                if (dtoLog.IsReverted)
+                var revertedChange = false;
+                foreach (DtoLog dtoLog in gridSelectedItems)
                 {
-                    LogChanges("Can't revert a reverted log.", LogType.Error);
-                    return;
+                    if (dtoLog.IsReverted)
+                    {
+                        LogChanges("Can't revert a reverted log.", LogType.Error);
+                        return;
+                    }
+                    revertedChange = true;
+                    _boLog.Revert(dtoLog);
+                    logList[logList.IndexOf(logList.Single(x => x.Oid == dtoLog.Oid))].IsReverted = true;
                 }
-                revertedChange = true;
-                _boLog.Revert(dtoLog);
-                logList[logList.IndexOf(logList.Single(x => x.Oid == dtoLog.Oid))].IsReverted  = true;
-            }
-            if(revertedChange)
-                LogChanges("Changes are reverted.", LogType.Success);
-            else
-                LogChanges("Couldn't revert any changes.", LogType.Error);
+                if (revertedChange)
+                    LogChanges("Changes are reverted.", LogType.Success);
+                else
+                    LogChanges("Couldn't revert any changes.", LogType.Error);
+            };
+            backgroundWorker.RunWorkerAsync();
         }
 
         private void BtnRevertAll_Click(object sender, RoutedEventArgs e)
@@ -316,7 +370,7 @@ namespace Prevensomware.WPFGUI
             dataGridLogs.RowBackground = new SolidColorBrush(Color.FromArgb(255,34,34,36));
         }
 
-        private void ListExtensions_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ListExtensions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems != null && e.AddedItems.Count == 1)
             {
@@ -330,6 +384,24 @@ namespace Prevensomware.WPFGUI
             {
                 AddNewExtension();
             }
+        }
+
+        private void BtnSetServiceInterval_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtServiceInterval.Text)) return;
+            var serviceInterval = int.Parse(TxtServiceInterval.Text);
+            var backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += (o, args) =>
+            {
+                userSettings.ServiceInfo.Interval = serviceInterval;
+                userSettings.ServiceInfo.NextServiceRunDateTime = DateTime.Now.AddHours(serviceInterval);
+                _boUserSettings.Save(userSettings);
+                LogChanges($"Setting Prevensomware Scheduler Hour Interval To: {serviceInterval}", LogType.Info);
+                _windowsServiceManager.StartService(userSettings.ServiceInfo);
+                Dispatcher.Invoke(new Action(SetServiceLabels));
+            };
+            backgroundWorker.RunWorkerAsync();
+            TxtServiceInterval.Text = string.Empty;
         }
     }
     

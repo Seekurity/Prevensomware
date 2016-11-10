@@ -39,8 +39,8 @@
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.DisplayName = "Prevensomeware";
-            this.serviceInstaller1.ServiceName = "Prevensomeware";
+            this.serviceInstaller1.DisplayName = "Prevensomware";
+            this.serviceInstaller1.ServiceName = "Prevensomware";
             // 
             // ProjectInstaller
             // 

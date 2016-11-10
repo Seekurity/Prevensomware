@@ -1,6 +1,3 @@
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\System.Data.SQLite.dll
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\x64\SQLite.Interop.dll
-C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\x86\SQLite.Interop.dll
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\Prevensomware.exe.config
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\Prevensomware.exe
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\Prevensomware.pdb
@@ -38,3 +35,6 @@ C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Pre
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Prevensomware.WPFGUI.csproj.GenerateResource.Cache
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Prevensomware.exe
 C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\obj\Debug\Prevensomware.pdb
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\System.Data.SQLite.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\x64\SQLite.Interop.dll
+C:\Users\thewh\Documents\GitHub\Prevensomware\Prevensomware.WPFGUI\bin\Debug\x86\SQLite.Interop.dll

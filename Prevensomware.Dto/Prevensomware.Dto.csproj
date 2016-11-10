@@ -67,6 +67,7 @@
     <Compile Include="DtoRegistryValue.cs" />
     <Compile Include="DtoRegistryKey.cs" />
     <Compile Include="IDtoBase.cs" />
+    <Compile Include="ServiceState.cs" />
     <Compile Include="LogType.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
