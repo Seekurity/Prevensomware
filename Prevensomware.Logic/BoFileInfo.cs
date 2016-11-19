@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Prevensomware.DA;
 using Prevensomware.Dto;
 
@@ -9,7 +10,6 @@ namespace Prevensomware.Logic
     public class BoFileInfo: BoBase<DtoFileInfo>
     {
         private readonly FileManager _fileManager;
-        private static readonly Random Random = new Random();
         public BoFileInfo()
         {
             _fileManager = new FileManager();
@@ -17,16 +17,18 @@ namespace Prevensomware.Logic
         public bool RevertForPath(string path)
         {
             var fileExtension = Path.GetExtension(path);
-            var fileInfoList = new FileInfoRepository().LoadWithReplacedExtension(fileExtension);
-            if (fileInfoList == null) return false;
-            return fileInfoList != null && _fileManager.ChangeFileExtension(fileInfoList.First().OriginalExtension, path);
+            string originalExtension;
+            try
+            {
+                originalExtension = Encoding.UTF8.GetString(Convert.FromBase64String(fileExtension.Remove(0,1)));
+            }
+            catch
+            {
+                return false;
+            }
+            return fileExtension != null && _fileManager.ChangeFileExtension("."+originalExtension, path);
         }
-        private static string RandomString(int length)
-        {
-            const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[Random.Next(s.Length)]).ToArray());
-        }
+
         public DtoFileInfo InsertNewFileInfo(string originalExtension,ref DtoUserSettings userSettings)
         {
             var fileInfoList = new FileInfoRepository().LoadWithOriginalExtension(originalExtension).ToList();
@@ -37,8 +39,8 @@ namespace Prevensomware.Logic
                 fileInfo = new DtoFileInfo
                 {
                     CreateDateTime = DateTime.Now,
-                    OriginalExtension = !originalExtension.StartsWith(".") ? "." + originalExtension : originalExtension,
-                    ReplacedExtension = "." + RandomString(4)
+                    OriginalExtension = "." + originalExtension,
+                    ReplacedExtension = "." + Convert.ToBase64String(Encoding.UTF8.GetBytes(originalExtension))
                 };
                 userSettings.AddFileExtension(fileInfo);
                 userSettingsRepository.CreateOrUpdate(userSettings);

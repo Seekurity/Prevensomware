@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Prevensomware.WPFGUI"
         mc:Ignorable="d"
         Title="Prevensomware" Height="563.211" Width="521.574" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FFCACAF0" Foreground="#FF16161B" BorderBrush="#FFD39696" MouseDown="MainFrm_MouseDown">
-    <Grid Background="#FF2D2D30">
+    <Grid Background="#FF222224">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="329*"/>
             <ColumnDefinition Width="191*"/>
@@ -155,23 +155,24 @@
             <TabItem Header="Advanced" Foreground="White">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="14*"/>
-                        <ColumnDefinition Width="144*"/>
-                        <ColumnDefinition Width="89*"/>
+                        <ColumnDefinition Width="28*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="270*"/>
+                        <ColumnDefinition Width="191*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="TxtServiceInterval" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="91.913,10,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1"/>
-                    <Label x:Name="label" Content="Scheduler Interval" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,0" Foreground="White" Grid.ColumnSpan="2"/>
-                    <ListBox x:Name="ListExtensions" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="173" Margin="92,75,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1" SelectionChanged="ListExtensions_SelectionChanged" ItemsSource="{Binding}">
+                    <TextBox x:Name="TxtServiceInterval" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="75.2,57,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="2"/>
+                    <Label x:Name="label" Content="Scheduler Interval" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-2,53,0,0" Foreground="White" Height="26" Width="105" Grid.ColumnSpan="3"/>
+                    <ListBox x:Name="ListExtensions" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="173" Margin="75.2,127,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="2" SelectionChanged="ListExtensions_SelectionChanged" ItemsSource="{Binding}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding OriginalExtension}"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Label x:Name="label_Copy" Content="Extensions List" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,75,0,0" Foreground="White" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="TxtExtension" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="92,41,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="1" KeyDown="TxtExtension_OnKeyDown"/>
-                    <Label x:Name="label_Copy1" Content="Add Extension" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0" Foreground="White" Grid.ColumnSpan="2"/>
-                    <Button x:Name="BtnAddExtension" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="144,41,0,0" Height="23" Background="#FF3B3B3E" Foreground="White" Click="BtnAddExtension_Click" Grid.Column="1">
+                    <Label x:Name="label_Copy" Content="Extensions List" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-2,127,0,0" Foreground="White" Grid.ColumnSpan="3" Height="26" Width="87"/>
+                    <TextBox x:Name="TxtExtension" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Margin="75.2,93,0,0" Background="#FF3B3B3E" Foreground="White" Grid.Column="2" KeyDown="TxtExtension_OnKeyDown"/>
+                    <Label x:Name="label_Copy1" Content="Add Extension" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-2,93,0,0" Foreground="White" Grid.ColumnSpan="3" Height="26" Width="86"/>
+                    <Button x:Name="BtnAddExtension" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="127.2,93,0,0" Height="23" Background="#FF3B3B3E" Foreground="White" Click="BtnAddExtension_Click" Grid.Column="2">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
@@ -188,7 +189,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button x:Name="BtnSetServiceInterval" Content="Set" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="207,10,0,0" Height="23" Foreground="White" Background="#FF3B3B3E" Grid.Column="1" Click="BtnSetServiceInterval_OnClick">
+                    <Button x:Name="BtnSetServiceInterval" Content="Set" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="190.2,57,0,0" Height="23" Foreground="White" Background="#FF3B3B3E" Grid.Column="2" Click="BtnSetServiceInterval_OnClick">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
@@ -205,17 +206,17 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Label x:Name="label_Copy2" Content="hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="143.913,6,0,0" Width="32" Foreground="White" Grid.Column="1"/>
-                    <Label x:Name="label1" Content="Service Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,8,0,0" Grid.Column="2" Foreground="White"/>
-                    <Label x:Name="label1_Copy" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,34,0,0" Grid.Column="2" Width="51" Foreground="White"/>
-                    <Label x:Name="LabelServiceStatus" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,34,0,0" Grid.Column="2" Width="116" Foreground="White"/>
-                    <Label x:Name="LabelServiceCurrentInterval" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,65,0,0" Grid.Column="2" Width="32" Foreground="White"/>
-                    <Label x:Name="label1_Copy3" Content="Current Interval:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,65,0,0" Grid.Column="2" Width="95" Foreground="White"/>
-                    <Label x:Name="label1_Copy4" Content="Hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,65,0,0" Grid.Column="2" Width="38" Foreground="White"/>
-                    <Label x:Name="LabelNextServiceRun" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,96,0,0" Grid.Column="2" Width="32" Foreground="White"/>
-                    <Label x:Name="label1_Copy6" Content="Service will run in:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,96,0,0" Grid.Column="2" Width="107" Foreground="White"/>
-                    <Label x:Name="label1_Copy7" Content="Min" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,96,0,0" Grid.Column="2" Width="38" Foreground="White"/>
-                    <Button x:Name="BtnRemoveExtension" Content="Remove" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="207,41,0,0" Height="23" Background="#FF3B3B3E" Foreground="White" Click="BtnRemoveExtension_Click" Grid.Column="1">
+                    <Label x:Name="label_Copy2" Content="Hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="127.2,53,0,0" Width="32" Foreground="White" Grid.Column="2" Height="26"/>
+                    <Label x:Name="label1" Content="Scheduler States:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1.2,8,0,0" Grid.Column="3" Foreground="White" Height="26" Width="100"/>
+                    <Label x:Name="label1_Copy" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2.2,34,0,0" Grid.Column="3" Width="51" Foreground="White" Height="26"/>
+                    <Label x:Name="LabelServiceStatus" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51.2,34,0,0" Grid.Column="3" Width="116" Foreground="White" Height="26"/>
+                    <Label x:Name="LabelServiceCurrentInterval" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108.2,65,0,0" Grid.Column="3" Width="32" Foreground="White" Height="26"/>
+                    <Label x:Name="label1_Copy3" Content="Current Interval:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1.2,65,0,0" Grid.Column="3" Width="95" Foreground="White" Height="26"/>
+                    <Label x:Name="label1_Copy4" Content="Hrs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153.2,65,0,0" Grid.Column="3" Width="38" Foreground="White" Height="26"/>
+                    <Label x:Name="LabelNextServiceRun" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108.2,96,0,0" Grid.Column="3" Width="32" Foreground="White" Height="26"/>
+                    <Label x:Name="label1_Copy6" Content="Service will run in:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1.2,96,0,0" Grid.Column="3" Width="107" Foreground="White" Height="26"/>
+                    <Label x:Name="label1_Copy7" Content="Min" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153.2,96,0,0" Grid.Column="3" Width="38" Foreground="White" Height="26"/>
+                    <Button x:Name="BtnRemoveExtension" Content="Remove" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="190.2,93,0,0" Height="23" Background="#FF3B3B3E" Foreground="White" Click="BtnRemoveExtension_Click" Grid.Column="2">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
@@ -232,6 +233,46 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
+                    <Button x:Name="BtnStopScheduler" Content="Stop Scheduler" HorizontalAlignment="Left" VerticalAlignment="Top" Width="86" Margin="95.2,127,0,0" Height="23" Foreground="White" Background="#FF3B3B3E" Grid.Column="3">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
+                                    <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF707070"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF6495ED"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="BtnStartScheduler" Content="Start Scheduler" HorizontalAlignment="Left" VerticalAlignment="Top" Width="86" Margin="2.2,127,0,0" Height="23" Foreground="White" Background="#FF3B3B3E" Grid.Column="3">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="border" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderThickness="1">
+                                    <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF707070"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF6495ED"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <GroupBox x:Name="schedulerGroupBox" Header="Scheduler Path" HorizontalAlignment="Left" VerticalAlignment="Top" Width="219" Height="43" Foreground="White" Grid.ColumnSpan="3">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton x:Name="RadioBtnSchedulerHdd" Content="Hard Drive"  Foreground="White" Margin="0,0,0,0"/>
+                            <RadioButton x:Name="RadioBtnSchedulerPath" Content="Choose Path" Foreground="White" Margin="30,0,0,0" />
+                        </StackPanel>
+                    </GroupBox>
                 </Grid>
             </TabItem>
             <TabItem Header="About" Foreground="White">
@@ -281,7 +322,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Label x:Name="label2" Content="Prevensomware" HorizontalAlignment="Left" VerticalAlignment="Top" Height="62" Width="358" Foreground="#FF8B8B92" FontSize="43" FontFamily="Tahoma" FontWeight="Bold" Grid.ColumnSpan="2" Margin="8,0,0,0"/>
+        <Label x:Name="label2" Content="Prevensomware" HorizontalAlignment="Left" VerticalAlignment="Top" Height="62" Width="358" Foreground="White" FontSize="43" FontFamily="Tahoma" FontWeight="Bold" Grid.ColumnSpan="2" Margin="8,0,0,0"/>
         <Label x:Name="label3" Content="By Seekurity Labs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="242,41,0,0" Foreground="#FFFF1500" FontSize="15" Grid.ColumnSpan="2" Width="127"/>
     </Grid>
 </Window>

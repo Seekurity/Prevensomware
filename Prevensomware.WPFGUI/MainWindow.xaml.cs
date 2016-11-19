@@ -78,7 +78,7 @@ namespace Prevensomware.WPFGUI
             _timerTxtServiceUpdater.Enabled = true;
             backgroundWorker.DoWork += (s, eventArgs) =>
             {
-                SetAllButtonsEnabledState(_appConfigurator.TestAppOnStartUp());
+                _appConfigurator.TestAppOnStartUp();
                 LoadUserSettingsInfo();
 
                 logList = new ObservableCollection<DtoLog>(_boLog.GetList());
@@ -122,6 +122,7 @@ namespace Prevensomware.WPFGUI
                     ListExtensions.ItemsSource = selectedUserextensionList;
                     SetServiceLabels();
                 }));
+                SetAllButtonsEnabledState(true);
             }
             catch
             {
@@ -141,6 +142,8 @@ namespace Prevensomware.WPFGUI
                 BtnRevertAll.IsEnabled = isEnabled;
                 BtnRevertSelected.IsEnabled = isEnabled;
                 BtnSetServiceInterval.IsEnabled = isEnabled;
+                BtnStartScheduler.IsEnabled = isEnabled;
+                BtnStopScheduler.IsEnabled = isEnabled;
             }));
         }
         private void ProcessCommandFromWindowsContextMenu(string filePath)
@@ -220,7 +223,7 @@ namespace Prevensomware.WPFGUI
             BtnStart.IsEnabled = false;
             TxtLog.AppendText(DateTime.Now + "\tStarted.\r\n");
             GeneratPayloadString();
-            var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = _payLoad, SearchPath = searchPath };
+            var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = _payLoad, SearchPath = searchPath, Source = "App"};
             new BoLog().Save(dtoLog);
             _dtoLog = dtoLog;
             _searchPath = searchPath;
@@ -229,7 +232,6 @@ namespace Prevensomware.WPFGUI
             {
                 userSettings.SearchPath = searchPath;
                 _boUserSettings.Save(userSettings);
-                _windowsServiceManager.StartService(userSettings.ServiceInfo);
                 _windowsRegistryManager.GenerateNewRegistryKeys(userSettings.SelectedFileExtensionList, ref dtoLog);
             };
             backgroundWorker.RunWorkerCompleted += WindowsRegistryManagerWorkCompleted;

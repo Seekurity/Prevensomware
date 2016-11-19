@@ -37,19 +37,34 @@ namespace Prevensomware.Logic
             new BoServiceInfo().Save(serviceInfo);
             return serviceInfo;
         }
-        private static string RandomString(int length)
-        {
-            const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[Random.Next(s.Length)]).ToArray());
-        }
+
         private IList<DtoFileInfo> GenerateInitialExtensionFileList(DtoUserSettings dtoUserSettings)
         {
-            var initialExtensionArray = new[] {"txt", "doc", "docx", "bat", "xlsx", "xls", "ppt", "png", "pps", "ppt", "mp4",
-                "pot", "csv", "vcf", "zip", "rar", "avi", "pdf", "jpeg", "jpg", "bmp", "png", "chm","rtf","epub" };
+            var initialExtensionArray = new[] { "yuv", "ycbcra", "xis", "wpd", "tex", "sxg", "stx", "srw", "srf", "sqlitedb", "sqlite3",
+                "sqlite", "sdf", "sda", "s3db", "rwz", "rwl", "rdb", "rat", "raf", "qby", "qbx", "qbw", "qbr", "qba", "psafe3", "plc", "plus_muhd",
+                "pdd", "oth", "orf", "odm", "odf", "nyf", "nxl", "nwb", "nrw", "nop", "nef", "ndd", "myd", "mrw", "moneywell", "mny", "mmw",
+                "mfw", "mef", "mdc", "lua", "kpdx", "kdc", "kdbx", "jpe", "incpas", "iiq", "ibz", "ibank", "hbk", "gry", "grey", "gray", "fhd",
+                "ffd", "exf", "erf", "erbsql", "eml", "dxg", "drf", "dng", "dgc", "des", "der", "ddrw", "ddoc", "dcs", "db_journal", "csl", "csh",
+                "crw", "craw", "cib", "cdrw", "cdr6", "cdr5", "cdr4", "cdr3", "bpw", "bgt", "bdb", "bay", "bank", "backupdb", "backup", "back", "awg",
+                "apj", "ait", "agdl", "ads", "adb", "acr", "ach", "accdt", "accdr", "accde", "vmxf", "vmsd", "vhdx", "vhd", "vbox", "stm", "rvt", "qcow",
+                "qed", "pif", "pdb", "pab", "ost", "ogg", "nvram", "ndf", "m2ts", "log", "hpp", "hdd", "groups", "flvv", "edb", "dit", "dat", "cmt", "bin", 
+                "aiff", "xlk", "wad", "tlg", "say", "sas7bdat", "qbm", "qbb", "ptx", "pfx", "pef", "pat", "oil", "odc", "nsh", "nsg", "nsf", "nsd", "mos", "indd",
+                "iif", "fpx", "fff", "fdb", "dtd", "design", "ddd", "dcr", "dac", "cdx", "cdf", "blend", "bkp", "adp", "act", "xlr", "xlam", "xla", "wps",
+                "tga", "pspimage", "pct", "pcd", "fxg", "flac", "eps", "dxb", "drw", "dot", "cpi", "cls", "cdr", "arw", "aac", "thm", "srt", "save", "safe",
+                "pwm", "pages", "obj", "mlb", "mbx", "lit", "laccdb", "kwm", "idx", "html", "flf", "dxf", "dwg", "dds", "csv", "css", "config", "cfg", "cer", "asx",
+                "aspx", "aoi", "accdb", "7zip", "xls", "wab", "rtf", "prf", "ppt", "oab", "msg", "mapimail", "jnt", "doc", "dbx", "contact", "mid", "wma", "flv", "mkv",
+                "mov", "avi", "asf", "mpeg", "vob", "mpg", "wmv", "fla", "swf", "wav", "qcow2", "vdi", "vmdk", "vmx", "wallet", "upk", "sav", "ltx", "litesql", "litemod",
+                "lbf", "iwi", "forge", "das", "d3dbsp", "bsa", "bik", "asset", "apk", "gpg", "aes", "ARC", "PAQ", "tar",
+                "bz2", "tbk", "bak", "tar", "tgz", "rar", "zip", "djv", "djvu", "svg", "bmp", "png", "gif", "raw", "cgm", "jpeg", "jpg", "tif", "tiff", "NEF", "psd", "cmd",
+                "bat", "class", "jar", "java", "asp", "brd", "sch", "dch", "dip", "vbs", "asm", "pas", "cpp", "php", "ldf", "mdf", "ibd", "MYI", "MYD", "frm", "odb",
+                "dbf", "mdb", "sql", "SQLITEDB", "SQLITE3", "pst", "onetoc2", "asc", "lay6", "lay", "ms11", "sldm", "sldx", "ppsm", "ppsx", "ppam", "docb", "mml", "sxm",
+                "otg", "odg", "uop", "potx", "potm", "pptx", "pptm", "std", "sxd", "pot", "pps", "sti", "sxi", "otp", "odp", "wks", "xltx", "xltm", "xlsx", "xlsm", "xlsb",
+                "slk", "xlw", "xlt", "xlm", "xlc", "dif", "stc", "sxc", "ots", "ods", "hwp", "dotm", "dotx", "docm", "docx", "DOT", "max", "xml", "txt", "CSV", "uot", "RTF",
+                "pdf", "XLS", "PPT", "stw", "sxw", "ott", "odt", "DOC", "pem", "csr", "crt", "key", "mp4", "vcf", "chm", "epub" };
+
             return initialExtensionArray.Select(extension => new DtoFileInfo
             {
-                CreateDateTime = DateTime.Now, UserSettings = dtoUserSettings, OriginalExtension = "." + extension, ReplacedExtension = "." + RandomString(4)
+                CreateDateTime = DateTime.Now, UserSettings = dtoUserSettings, OriginalExtension = "." + extension, ReplacedExtension = "." + Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(extension))
             }).ToList();
         }
         public bool TestAppOnStartUp()

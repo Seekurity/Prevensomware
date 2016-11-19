@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Text;
 using Prevensomware.Dto;
 
 namespace Prevensomware.Logic
@@ -23,7 +26,20 @@ namespace Prevensomware.Logic
                 var fileList = dtoLog.SearchPath == "HD" ?
                 _fileManager.SearchFileListInWholeHardDrive(fileInfo.ReplacedExtension) 
                 : _fileManager.GetFiles(dtoLog.SearchPath, "*"+fileInfo.ReplacedExtension);
-                _fileManager.ChangeFileListExtensions(fileInfo.OriginalExtension, fileList);
+                foreach (var filePath in fileList)
+                {
+                    var fileExtension = Path.GetExtension(filePath);
+                    string originalExtension;
+                    try
+                    {
+                        originalExtension = Encoding.UTF8.GetString(Convert.FromBase64String(fileExtension.Remove(0,1)));
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+                    _fileManager.ChangeFileExtension("."+originalExtension, filePath);
+                }
             }
             dtoLog.IsReverted = true;
             Save(dtoLog);

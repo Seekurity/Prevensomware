@@ -12,6 +12,8 @@ namespace Prevensomware.Dto
         private bool isReverted;
         public virtual bool IsReverted { get {return isReverted;} set { SetField(ref isReverted, value, "IsReverted"); } }
         public virtual string SearchPath { get; set; }
+        public virtual string Source { get; set; }
+
         public virtual void AddRegistryKey(DtoRegistryKey dtoRegistryKey)
         {
             lock (this)

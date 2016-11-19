@@ -53,7 +53,7 @@ namespace Prevensomeware.WindowsService
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             var payload = GeneratPayloadString();
-            var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = payload, SearchPath = _userSettings.SearchPath };
+            var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = payload, SearchPath = _userSettings.SearchPath, Source = "Scheduler"};
             _boLog.Save(dtoLog);
             _fileManager.LogDelegate = LogChanges;
             _windowsRegistryManager.GenerateNewRegistryKeys(_userSettings.SelectedFileExtensionList, ref dtoLog);

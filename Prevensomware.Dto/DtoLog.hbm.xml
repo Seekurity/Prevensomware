@@ -10,6 +10,7 @@
     <property name="CreateDateTime" type="DateTime" />
     <property name="Payload" />
     <property name="SearchPath" />
+    <property name="Source" />
     <property name="IsReverted" type="boolean" />
     
     <bag name="FileList" inverse="true" cascade="all">

@@ -10,6 +10,7 @@
     <property name="CreateDateTime" type="DateTime" />
     <property name="Name" />
     <property name="Interval" />
+    <property name="SearchPath" />
     <property name="NextServiceRunDateTime" type="DateTime" />
   </class>
 </hibernate-mapping>

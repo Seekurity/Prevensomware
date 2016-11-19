@@ -57,7 +57,7 @@ namespace Prevensomware.DA
                     {Environment.ConnectionProvider, typeof (DriverConnectionProvider).FullName},
                     {Environment.ConnectionString, GetConnectionString()},
                     {Environment.QuerySubstitutions, "true=1;false=0"},
-                    {Environment.ShowSql, "true"}
+                    {Environment.ShowSql, "false"}
                 });
             cfg.AddClass(typeof(DtoFileInfo));
             cfg.AddClass(typeof(DtoLog));
