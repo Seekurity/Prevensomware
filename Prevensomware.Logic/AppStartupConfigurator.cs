@@ -20,6 +20,7 @@ namespace Prevensomware.Logic
                 CreateDateTime = DateTime.Now
             };
             dtoUserSettings.SelectedFileExtensionList = GenerateInitialExtensionFileList(dtoUserSettings);
+            dtoUserSettings.ServiceInfo.UserSettings = dtoUserSettings;
             new BoUserSettings().Save(dtoUserSettings);
 
             return dtoUserSettings;
@@ -67,7 +68,7 @@ namespace Prevensomware.Logic
                 CreateDateTime = DateTime.Now, UserSettings = dtoUserSettings, OriginalExtension = "." + extension, ReplacedExtension = "." + Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(extension))
             }).ToList();
         }
-        public bool TestAppOnStartUp()
+        public bool TestAppOnStartUp(bool isStartedFromService = false)
         {
             LogDelegate?.Invoke("Starting App Startup Test.", LogType.Info);
             var checkSucceeded = false;
@@ -78,7 +79,7 @@ namespace Prevensomware.Logic
                 LogDelegate?.Invoke("Startup Test: Database is accessible.", LogType.Success);
                 checkSucceeded = true;
             }
-            if (!IsAppPathInRegistryCorrect())
+            if (!IsAppPathInRegistryCorrect(isStartedFromService))
                 LogDelegate?.Invoke("Startup Test: Couldn't read/write to Windows Registry.", LogType.Error);
             else
             {
@@ -110,8 +111,9 @@ namespace Prevensomware.Logic
                 return false;
             }
         }
-        private bool IsAppPathInRegistryCorrect()
+        private bool IsAppPathInRegistryCorrect(bool isStartedFromService)
         {
+            if (isStartedFromService) return false;
             var currentAppPathValue = Registry.GetValue(@"HKEY_CLASSES_ROOT\*\shell\Revert File\command","",null);
             if (currentAppPathValue != null)
             {

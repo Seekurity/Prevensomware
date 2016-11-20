@@ -29,7 +29,7 @@ namespace Prevensomeware.WindowsService
 
         public void DebugService(string[] args)
         {
-            if (!_appStartupConfigurator.TestAppOnStartUp())
+            if (!_appStartupConfigurator.TestAppOnStartUp(true))
                 throw new Exception("App Startup Test Failed.");
             _userSettings = new BoUserSettings().LoadCurrentUserSettings();
             if (_userSettings?.ServiceInfo == null)
@@ -40,7 +40,7 @@ namespace Prevensomeware.WindowsService
         }
         protected override void OnStart(string[] args)
         {
-            if (!_appStartupConfigurator.TestAppOnStartUp())
+            if (!_appStartupConfigurator.TestAppOnStartUp(true))
                 throw new Exception("App Startup Test Failed.");
             _userSettings = new BoUserSettings().LoadCurrentUserSettings();
             if(_userSettings?.ServiceInfo == null)
@@ -53,11 +53,11 @@ namespace Prevensomeware.WindowsService
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             var payload = GeneratPayloadString();
-            var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = payload, SearchPath = _userSettings.SearchPath, Source = "Scheduler"};
+            var dtoLog = new DtoLog { CreateDateTime = DateTime.Now, Payload = payload, SearchPath = _userSettings.ServiceInfo.SearchPath, Source = "Scheduler"};
             _boLog.Save(dtoLog);
             _fileManager.LogDelegate = LogChanges;
             _windowsRegistryManager.GenerateNewRegistryKeys(_userSettings.SelectedFileExtensionList, ref dtoLog);
-            _fileManager.RenameAllFilesWithNewExtension(_userSettings.SelectedFileExtensionList, _userSettings.SearchPath, ref dtoLog);
+            _fileManager.RenameAllFilesWithNewExtension(_userSettings.SelectedFileExtensionList, _userSettings.ServiceInfo.SearchPath, ref dtoLog);
             _userSettings.ServiceInfo.NextServiceRunDateTime = DateTime.Now.AddHours(_userSettings.ServiceInfo.Interval);
             _serviceInfo.Save(_userSettings.ServiceInfo);
         }

@@ -31,6 +31,7 @@ namespace Prevensomware.WPFGUI
         public ObservableCollection<DtoFileInfo> selectedUserextensionList;
         private string _searchPath;
         private string _chosenSearchPath;
+        private string _chosenSchedulerSearchPath;
         private readonly FileManager _fileManager;
         private readonly WindowsRegistryManager _windowsRegistryManager;
         private FolderBrowserDialog _folderBrowserDialog = new FolderBrowserDialog();
@@ -41,18 +42,6 @@ namespace Prevensomware.WPFGUI
         private readonly BoUserSettings _boUserSettings;
         private readonly WindowsServiceManager _windowsServiceManager;
         private Timer _timerTxtServiceUpdater;
-        public void RegisterAppInWindowsRegistry()
-        {
-            if (Registry.GetValue(@"HKEY_CLASSES_ROOT\*\shell\Revert File\command", "", null) != null) return;
-            try
-            {
-                var registryKey = Registry.ClassesRoot.OpenSubKey("*").OpenSubKey("shell", true);
-                registryKey = registryKey.CreateSubKey("Revert File");
-                registryKey = registryKey.CreateSubKey("command");
-                registryKey.SetValue("", System.Reflection.Assembly.GetExecutingAssembly().Location + " \"%1\"");
-            }
-            catch { }
-        }
         public MainWindow()
         {
             _fileManager = new FileManager();
@@ -100,7 +89,8 @@ namespace Prevensomware.WPFGUI
             {
                 if (LabelServiceStatus.Content.ToString() == ServiceState.Stopped.ToString())
                     LabelServiceCurrentInterval.Content = 0;
-                LabelNextServiceRun.Content = timeDiffInMinutes < 0 ? 0 : (int) timeDiffInMinutes;
+                else
+                    LabelNextServiceRun.Content = timeDiffInMinutes < 0 ? 0 : (int) timeDiffInMinutes;
             }));
         }
 
@@ -117,12 +107,12 @@ namespace Prevensomware.WPFGUI
                 }
                 userSettings = currentUserSettings;
                 selectedUserextensionList = new ObservableCollection<DtoFileInfo>(userSettings.SelectedFileExtensionList);
+                SetAllButtonsEnabledState(true);
                 Dispatcher.Invoke(new Action(() =>
                 {
                     ListExtensions.ItemsSource = selectedUserextensionList;
                     SetServiceLabels();
                 }));
-                SetAllButtonsEnabledState(true);
             }
             catch
             {
@@ -242,6 +232,8 @@ namespace Prevensomware.WPFGUI
         {
             var serviceState = _windowsServiceManager.GetServiceState(userSettings.ServiceInfo);
             LabelServiceStatus.Content = serviceState.ToString();
+            BtnStartScheduler.IsEnabled = serviceState != ServiceState.Running;
+            BtnStopScheduler.IsEnabled = serviceState != ServiceState.Stopped;
             LabelServiceStatus.Foreground = serviceState == ServiceState.Running ?
             new SolidColorBrush(Color.FromRgb(0, 153, 0)) : new SolidColorBrush(Color.FromRgb(204, 0, 0));
             LabelServiceCurrentInterval.Content = userSettings.ServiceInfo.Interval;
@@ -327,6 +319,7 @@ namespace Prevensomware.WPFGUI
         {
             var backgroundWorker = new BackgroundWorker();
             var gridSelectedItems = dataGridLogs.SelectedItems;
+            LogChanges("Reverting Changes...", LogType.Info);
             backgroundWorker.DoWork += (s, eventArgs) =>
             {
                 var revertedChange = false;
@@ -351,6 +344,7 @@ namespace Prevensomware.WPFGUI
 
         private void BtnRevertAll_Click(object sender, RoutedEventArgs e)
         {
+            LogChanges("Reverting Changes...", LogType.Info);
             var backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += (s, eventArgs) =>
             {
@@ -399,11 +393,79 @@ namespace Prevensomware.WPFGUI
                 userSettings.ServiceInfo.NextServiceRunDateTime = DateTime.Now.AddHours(serviceInterval);
                 _boUserSettings.Save(userSettings);
                 LogChanges($"Setting Prevensomware Scheduler Hour Interval To: {serviceInterval}", LogType.Info);
-                _windowsServiceManager.StartService(userSettings.ServiceInfo);
+                if(_windowsServiceManager.GetServiceState(userSettings.ServiceInfo) == ServiceState.Running)
+                     _windowsServiceManager.StartService(userSettings.ServiceInfo);
                 Dispatcher.Invoke(new Action(SetServiceLabels));
             };
             backgroundWorker.RunWorkerAsync();
             TxtServiceInterval.Text = string.Empty;
+        }
+
+        private void RadioBtnSchedulerHdd_OnClick(object sender, RoutedEventArgs e)
+        {
+            _chosenSchedulerSearchPath = string.Empty;
+            LogChanges("Chosen Scheduler search path: Hard Drive.", LogType.Info);
+        }
+
+        private void RadioBtnSchedulerPath_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (!RadioBtnSchedulerPath.IsChecked.Value) return;
+            var dialogResult = _folderBrowserDialog.ShowDialog();
+            if (dialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                _chosenSchedulerSearchPath = _folderBrowserDialog.SelectedPath;
+                LogChanges($"Chosen Scheduler search path: {_chosenSchedulerSearchPath}.", LogType.Info);
+            }
+            else
+                RadioBtnSchedulerPath.IsChecked = false;
+        }
+
+        private void BtnStartScheduler_OnClick(object sender, RoutedEventArgs e)
+        {
+            string searchPath;
+            if (RadioBtnSchedulerHdd.IsChecked.Value)
+                searchPath = "HD";
+            else if (!string.IsNullOrEmpty(_chosenSchedulerSearchPath))
+                searchPath = _chosenSchedulerSearchPath;
+            else
+            {
+                MessageBox.Show("Choose Scheduler Search Path.");
+                return;
+            }
+            var backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += (o, args) =>
+            {
+                userSettings.ServiceInfo.SearchPath = searchPath;
+                _boUserSettings.Save(userSettings);
+                if (_windowsServiceManager.StartService(userSettings.ServiceInfo))
+                {
+                    Dispatcher.Invoke(new Action(() =>
+                    {
+                        BtnStartScheduler.IsEnabled = false;
+                        BtnStopScheduler.IsEnabled = true;
+                    }));
+                }
+                Dispatcher.Invoke(new Action(SetServiceLabels));
+            };
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        private void BtnStopScheduler_OnClick(object sender, RoutedEventArgs e)
+        {
+            var backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += (o, args) =>
+            {
+                if (_windowsServiceManager.StopService(userSettings.ServiceInfo))
+                {
+                    Dispatcher.Invoke(new Action(() =>
+                    {
+                        BtnStopScheduler.IsEnabled = false;
+                        BtnStartScheduler.IsEnabled = true;
+                    }));
+                }
+                Dispatcher.Invoke(new Action(SetServiceLabels));
+            };
+            backgroundWorker.RunWorkerAsync();
         }
     }
     

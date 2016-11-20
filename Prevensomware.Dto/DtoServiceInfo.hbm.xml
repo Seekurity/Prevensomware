@@ -12,5 +12,13 @@
     <property name="Interval" />
     <property name="SearchPath" />
     <property name="NextServiceRunDateTime" type="DateTime" />
+
+    <many-to-one
+     name="UserSettings"
+     class="DtoUserSettings"
+     cascade="save-update" >
+      <column name="IdUserSettings"
+				 index="IX_SERVICEINFO_UserSettings" />
+    </many-to-one>
   </class>
 </hibernate-mapping>
